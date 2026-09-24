@@ -41,7 +41,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css?v=8">
+<link rel="stylesheet" href="assets/css/style.css?v=9">
 
 <script type="application/ld+json">
 {
@@ -83,6 +83,7 @@
       <a href="menu.html">Menu</a>
       <a href="visit.html">Location</a>
       <a href="about.html">Our story</a>
+      <a href="contact.html">Contact</a>
     </nav>
 
     <div class="nav-cta">
@@ -100,19 +101,26 @@
       <a href="menu.html">Menu</a>
       <a href="visit.html">Location</a>
       <a href="about.html">Our story</a>
+  <a href="contact.html">Contact</a>
   <a href="order.html" class="btn btn-white btn-block">Order now</a>
 </nav>
 
 <main>
 <!-- ===== Hero ===== -->
 <section class="hero">
-  <div class="hero-media"><img src="https://images.unsplash.com/photo-1688978181542-87a886a16fbe?w=1800&q=80&auto=format&fit=crop" alt="" fetchpriority="high"></div>
+  <div class="hero-slider" id="heroSlider">
+    <div class="hero-slide is-active"><img src="https://images.unsplash.com/photo-1688978181542-87a886a16fbe?w=1800&q=80&auto=format&fit=crop" alt="A generous pile of freshly fried, golden crispy Kono Crisp fries" fetchpriority="high"></div>
+    <div class="hero-slide"><img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?w=1800&q=80&auto=format&fit=crop" alt="Golden fried samosas served with chutney, pomegranate and green chilli" loading="lazy"></div>
+    <div class="hero-slide"><img src="https://images.unsplash.com/photo-1576107232684-1279f390859f?w=1800&q=80&auto=format&fit=crop" alt="A wooden tray piled high with golden Kono Crisp fries" loading="lazy"></div>
+    <div class="hero-slide"><img src="https://images.unsplash.com/photo-1583067837451-c3491dce56b6?w=1800&q=80&auto=format&fit=crop" alt="A basket piled with crispy golden samosas" loading="lazy"></div>
+  </div>
   <div class="hero-inner">
     <h1>The crispiest fries<br>in Lahore</h1>
-    
+
     <div class="hero-actions"><a href="order.html" class="btn btn-white">Order now</a><a href="menu.html" class="btn btn-pale">view the menu</a><a href="visit.html" class="btn btn-text">find us</a></div>
-    
+
   </div>
+  <div class="hero-dots" id="heroDots" role="tablist" aria-label="Hero banner slides"></div>
 </section>
 
 <!-- ===== Where / how ===== -->
@@ -227,6 +235,7 @@
         <a href="menu.html">View our full menu <svg viewBox="0 0 24 24" fill="none"><path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
         <a href="visit.html">Find our location <svg viewBox="0 0 24 24" fill="none"><path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
         <a href="about.html">Our story <svg viewBox="0 0 24 24" fill="none"><path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <a href="contact.html">Get in touch <svg viewBox="0 0 24 24" fill="none"><path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
       </div>
     </div>
     <div class="footer-bottom">
@@ -313,7 +322,7 @@
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-<script src="assets/js/main.js?v=8"></script>
-<script src="assets/js/order.js?v=8"></script>
+<script src="assets/js/main.js?v=9"></script>
+<script src="assets/js/order.js?v=9"></script>
 </body>
 </html>

@@ -16,7 +16,8 @@
       {id:'malai-boti', name:'Malai Boti Samosa',       desc:'Creamy spiced malai boti filling', price:100},
       {id:'chicken-veg', name:'Chicken & Vegetable Samosa', desc:'Chicken and garden veg mix', price:80},
       {id:'pizza',       name:'Pizza Samosa',           desc:'Cheesy pizza-style filling', price:90},
-      {id:'bbq',         name:'BBQ Samosa',             desc:'Smoky BBQ chicken filling', price:90}
+      {id:'bbq',         name:'BBQ Samosa',             desc:'Smoky BBQ chicken filling', price:90},
+      {id:'qeema',       name:'Qeema Samosa',           desc:'Spiced minced meat filling', price:90}
     ],
     seasonings: [
       {name:'Crave Classic', color:'#E9D29A'},
@@ -665,6 +666,13 @@
     if(t.dataset.line !== undefined){
       var l = cart[Number(t.dataset.line)];
       l.qty = Math.max(1, Math.min(20, l.qty + Number(t.dataset.d)));
+      if(l.base === 'samosa'){
+        var lineMax = l.qty >= 2 ? 2 : 1;
+        if(l.sauces.length > lineMax){
+          l.sauces = l.sauces.slice(0, lineMax);
+          toast('Only ' + lineMax + ' sauce' + (lineMax === 1 ? '' : 's') + ' for ' + l.qty + (l.qty === 1 ? ' samosa' : ' samosas'));
+        }
+      }
       saveCart();
     } else if(t.dataset.remove !== undefined){
       cart.splice(Number(t.dataset.remove), 1);
