@@ -20,13 +20,8 @@
       {id:'qeema',       name:'Qeema Samosa',           desc:'Spiced minced meat filling', price:90}
     ],
     seasonings: [
-      {name:'Crave Classic', color:'#E9D29A'},
       {name:'Chaat Masala', color:'#B8672C'},
-      {name:'Ember BBQ', color:'#8A3A1E'},
-      {name:'Habanero Firestorm', color:'#D9401E'},
-      {name:'Cheese Overload', color:'#F2B632'},
-      {name:'Sweet Tangy', color:'#E58A5A'},
-      {name:'Tamarind Tang', color:'#6E3B22'}
+      {name:'Ember BBQ', color:'#8A3A1E'}
     ],
     sauces: [
       {name:'CRACK Sauce', color:'#EFA640'},
