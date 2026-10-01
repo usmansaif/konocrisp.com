@@ -4,7 +4,7 @@
   "use strict";
 
   var CONFIG = {
-    whatsappNumber: '923311440036',   // international format, no + or leading 0
+    whatsappNumber: '923238800909',   // international format, no + or leading 0
     deliveryFee: 100,                 // flat, delivery orders only
     maxSauces: 2,                     // sauces allowed per box
     fries: [
@@ -61,7 +61,7 @@
     name: 'Kono Crisp',
     tagline: 'Fry Day, Every Day',
     address: 'Model Town Link Road, Lahore',
-    phone: '0300 111 2223',
+    phone: '0323 8800909',
     email: 'hello@konocrisp.com',
     logo: 'assets/logo-lockup.jpg?v=2', /* bump the query version whenever this file is replaced, so cached copies don't linger */
     logoRatio: 1101 / 904 /* logo-lockup.jpg natural height / width */
