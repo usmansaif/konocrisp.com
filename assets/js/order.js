@@ -62,7 +62,7 @@
     tagline: 'Fry Day, Every Day',
     address: 'Model Town Link Road, Lahore',
     phone: '0323 8800909',
-    email: 'hello@konocrisp.com',
+    email: 'konocrisp@gmail.com',
     logo: 'assets/logo-lockup.jpg?v=2', /* bump the query version whenever this file is replaced, so cached copies don't linger */
     logoRatio: 1101 / 904 /* logo-lockup.jpg natural height / width */
   };
