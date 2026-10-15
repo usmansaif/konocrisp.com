@@ -88,21 +88,6 @@
     });
   }
 
-  /* Hero banner slider: plain auto-advancing photos, no controls overlaid */
-  var slider = document.getElementById('heroSlider');
-  if(slider){
-    var slides = slider.querySelectorAll('.hero-slide');
-    var current = 0;
-    var DELAY = 5000;
-
-    function next(){
-      slides[current].classList.remove('is-active');
-      current = (current + 1) % slides.length;
-      slides[current].classList.add('is-active');
-    }
-    if(slides.length > 1 && !reducedMotion) setInterval(next, DELAY);
-  }
-
   /* Menu page: highlight the category tab for the section in view */
   var tabs = document.querySelectorAll('.menu-tab');
   if(tabs.length && 'IntersectionObserver' in window){
