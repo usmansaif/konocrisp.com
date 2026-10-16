@@ -8,9 +8,9 @@
     deliveryFee: 100,                 // flat, delivery orders only
     maxSauces: 2,                     // sauces allowed per box
     fries: [
-      {id:'regular', name:'Regular Fries', desc:'A proper solo portion', price:350},
-      {id:'large',   name:'Large Fries',   desc:'For the serious craving', price:490},
-      {id:'sharing', name:'Sharing Box',   desc:'Big enough for two', price:690}
+      {id:'regular', name:'Small Fries',   desc:'A proper solo portion', price:150},
+      {id:'large',   name:'Medium Fries',  desc:'For the serious craving', price:250},
+      {id:'sharing', name:'Sharing Box',   desc:'Big enough for two', price:450}
     ],
     samosas: [
       {id:'malai-boti', name:'Malai Boti Samosa',       desc:'Creamy spiced malai boti filling', price:100},

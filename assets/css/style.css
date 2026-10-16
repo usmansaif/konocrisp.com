@@ -209,8 +209,8 @@ h1,h2,h3,h4{font-family:var(--ff-display);font-weight:700;line-height:1.15;lette
 .about-copy p.lede{margin-top:24px}
 .service-line{width:100%;max-width:640px;margin:32px auto 36px;display:flex;flex-direction:column;align-items:center;gap:14px;font-size:22px;font-weight:800;letter-spacing:.02em}
 .service-line::before,.service-line::after{content:"";display:block;width:100%;height:2px;background:url(../svg/Text-input.svg) center/100% 2px no-repeat}
-.photo-row{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(12px,2vw,28px);margin-top:clamp(48px,6vw,80px)}
-.photo-row img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:var(--r-lg)}
+.photo-row{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(12px,2vw,28px);margin-top:clamp(48px,6vw,80px)}
+.photo-row img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:var(--r-lg)}
 .photo-row img:nth-child(2){margin-top:clamp(24px,5vw,72px)}
 
 /* Story (about page) */
@@ -324,7 +324,7 @@ h1,h2,h3,h4{font-family:var(--ff-display);font-weight:700;line-height:1.15;lette
 .note svg{flex:none;width:30px;height:30px}
 
 /* ===== Steps (menu page) ===== */
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.steps{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
 .step{background:#fff;border:2px solid var(--ink);border-radius:var(--r-lg);box-shadow:4px 4px 0 var(--ink);padding:32px 28px}
 .step .step-num{width:44px;height:44px;font-size:20px;margin-bottom:18px;border:2px solid var(--ink);font-family:var(--ff-display);font-weight:400}
 .step h3{font-size:24px;color:var(--navy)}
