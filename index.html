@@ -97,17 +97,9 @@
 </nav>
 
 <main>
-<!-- ===== Hero ===== -->
-<section class="hero">
-  <div class="hero-media"><img src="assets/photos/hero-fries-1536.avif" srcset="assets/photos/hero-fries-768.avif 768w, assets/photos/hero-fries-1536.avif 1536w" sizes="100vw" alt="A blue box of golden, seasoned Kono Crisp fries with dips" fetchpriority="high"></div>
-  <div class="container hero-body">
-    <div class="hero-badge"><span>Lahore<br>since 2023</span></div>
-    <h1>The Crispiest<br>Fries in Lahore</h1>
-    <a href="order.html" class="btn btn--primary hero-cta">Order now <img class="arrow" src="assets/svg/arrow-right-dark.svg" alt="" width="21" height="15"></a>
-  </div>
-  <img class="hero-icon" src="assets/svg/Icon-1.svg" alt="" width="72" height="67">
-  <div class="hero-offer"><div class="container"><span>Fry Day, Every Day</span><span>Open daily, 12 PM &ndash; 12 AM</span></div></div>
-  <div class="scallop scallop--bottom" aria-hidden="true"></div>
+<!-- ===== Hero banner (slides are defined in assets/js/banner.js) ===== -->
+<section class="banner" id="heroBanner">
+  <h1 class="sr-only">The crispiest fries in Lahore</h1>
 </section>
 
 <!-- ===== About ===== -->
@@ -330,7 +322,8 @@
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-<script src="assets/js/main.js?v=11"></script>
+<script src="assets/js/banner.js?v=1"></script>
+<script src="assets/js/main.js?v=12"></script>
 <script src="assets/js/order.js?v=11"></script>
 </body>
 </html>
