@@ -20,17 +20,12 @@
       {id:'qeema',       name:'Qeema Samosa',           desc:'Spiced minced meat filling', price:90}
     ],
     sauces: [
-      {name:'CRACK Sauce', color:'#EFA640'},
-      {name:'Ghost Garlic', color:'#F4EFDD'},
-      {name:'Golden Cheese', color:'#F4B72E'},
-      {name:'Honey Glaze', color:'#D98E1F'},
-      {name:'Curry Twist', color:'#C98A2B'},
-      {name:'Green Fusion', color:'#6FA83A'},
-      {name:'Peri-Peri Volcano', color:'#C9361F'},
-      {name:'Frosty Mint', color:'#BFE3C8'},
-      {name:'Samurai Sauce', color:'#E0703A'},
-      {name:'Smoky BBQ', color:'#5A1A12'},
-      {name:'Secret Sauce', color:'#E6B98A'}
+      {name:'Tomato Ketchup', color:'#D8321F'},
+      {name:'Chilli Garlic', color:'#C9361F'},
+      {name:'Dynamite Sauce', color:'#E0703A'},
+      {name:'Honey Mustard Sauce', color:'#E6B34A'},
+      {name:'Garlic Mayo', color:'#F4EFDD'},
+      {name:'Ranch Sauce', color:'#EDE6CF'}
     ]
   };
 

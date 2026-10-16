@@ -25,7 +25,7 @@
       alt: 'A wooden tray piled high with golden fries',
       badge: '11<br>sauces',
       heading: 'Dip into<br>something bold',
-      text: 'Eleven sauces, always free with your box.',
+      text: 'Six sauces, always free with your box.',
       cta: {label: 'Explore sauces', href: 'menu.html#sauces'}
     },
     {
