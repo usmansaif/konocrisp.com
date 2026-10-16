@@ -19,10 +19,6 @@
       {id:'bbq',         name:'BBQ Samosa',             desc:'Smoky BBQ chicken filling', price:90},
       {id:'qeema',       name:'Qeema Samosa',           desc:'Spiced minced meat filling', price:90}
     ],
-    seasonings: [
-      {name:'Chaat Masala', color:'#B8672C'},
-      {name:'Ember BBQ', color:'#8A3A1E'}
-    ],
     sauces: [
       {name:'CRACK Sauce', color:'#EFA640'},
       {name:'Ghost Garlic', color:'#F4EFDD'},
@@ -51,7 +47,7 @@
   function itemsForBase(base){ return base === 'samosa' ? CONFIG.samosas : CONFIG.fries; }
   function itemById(base, id){ return itemsForBase(base).filter(function(x){ return x.id === id; })[0]; }
 
-  function unitPrice(line){ return itemById(line.base, line.item).price; }  // seasoning & sauces are free
+  function unitPrice(line){ return itemById(line.base, line.item).price; }  // sauces are free
 
   /* =========================================================
      Branded POS invoice (PNG, generated on canvas, auto-downloaded
@@ -123,7 +119,7 @@
         return {
           name: f.name, qty: l.qty, unit: unitPrice(l),
           lineTotal: unitPrice(l) * l.qty,
-          seasoning: l.seasoning, sauces: l.sauces.slice()
+          sauces: l.sauces.slice()
         };
       }),
       subtotal: subtotal(),
@@ -157,11 +153,10 @@
       var nameLines = fits ? [nameQty] : wrapText(mctx, nameQty, CW);
 
       mctx.font = '400 9.5px ' + MF;
-      var seasoningLines = wrapText(mctx, 'Seasoning: ' + it.seasoning, CW - 10);
       var sauceLines = wrapText(mctx, 'Sauces: ' + it.sauces.join(', '), CW - 10);
 
-      var h = 10 + nameLines.length * 15 + seasoningLines.length * 13 + sauceLines.length * 13;
-      return { it: it, nameLines: nameLines, fits: fits, priceStr: priceStr, seasoningLines: seasoningLines, sauceLines: sauceLines, h: h };
+      var h = 10 + nameLines.length * 15 + sauceLines.length * 13;
+      return { it: it, nameLines: nameLines, fits: fits, priceStr: priceStr, sauceLines: sauceLines, h: h };
     });
 
     var notesLines = [];
@@ -263,7 +258,6 @@
       ctx.textAlign = 'left';
       ctx.fillStyle = INV.muted;
       ctx.font = '400 9.5px ' + MF;
-      b.seasoningLines.forEach(function(l){ y += 13; ctx.fillText(l, PAD, y); });
       b.sauceLines.forEach(function(l){ y += 13; ctx.fillText(l, PAD, y); });
     });
 
@@ -362,14 +356,14 @@
 
   /* ---------- cart state ---------- */
   var cart = read(CART_KEY, []).map(function(l){
-    if(l && !l.base && l.fries) return {base:'fries', item:l.fries, seasoning:l.seasoning, sauces:l.sauces, qty:l.qty};
+    if(l && !l.base && l.fries) return {base:'fries', item:l.fries, sauces:l.sauces, qty:l.qty};
     return l;
   }).filter(function(l){
-    return l && itemById(l.base, l.item) && l.seasoning && Array.isArray(l.sauces) && l.qty > 0;
+    return l && itemById(l.base, l.item) && Array.isArray(l.sauces) && l.qty > 0;
   });
   var orderType = 'Delivery';
 
-  function lineKey(l){ return [l.base, l.item, l.seasoning, l.sauces.slice().sort().join('|')].join('::'); }
+  function lineKey(l){ return [l.base, l.item, l.sauces.slice().sort().join('|')].join('::'); }
   function cartCount(){ return cart.reduce(function(n, l){ return n + l.qty; }, 0); }
   function subtotal(){ return cart.reduce(function(n, l){ return n + unitPrice(l) * l.qty; }, 0); }
   function deliveryFee(){ return orderType === 'Delivery' && cart.length ? CONFIG.deliveryFee : 0; }
@@ -430,10 +424,6 @@
   }
 
   function renderBuilder(){
-    var seasOpts = CONFIG.seasonings.map(function(s){
-      return '<label class="opt"><input type="radio" name="seasoning" value="' + esc(s.name) + '">' +
-        '<span class="opt-box"><span class="swatch" style="--c:' + s.color + '"></span>' + esc(s.name) + '<span class="opt-tick"></span></span></label>';
-    }).join('');
     var sauceOpts = CONFIG.sauces.map(function(s){
       return '<label class="opt"><input type="checkbox" name="sauce" value="' + esc(s.name) + '">' +
         '<span class="opt-box"><span class="swatch" style="--c:' + s.color + '"></span>' + esc(s.name) + '<span class="opt-tick"></span></span></label>';
@@ -447,9 +437,7 @@
         '</div></div>' +
       '<div class="b-step done" data-step="item"><div class="b-head"><span class="b-num">2</span><h3 id="itemStepTitle">Pick your fries</h3><small>Choose one</small></div>' +
         '<div class="opt-grid opt-grid--fries" id="itemGrid"></div></div>' +
-      '<div class="b-step" data-step="seasoning"><div class="b-head"><span class="b-num">3</span><h3>Choose a seasoning</h3><small>Choose one</small></div>' +
-        '<div class="opt-grid opt-grid--chips">' + seasOpts + '</div></div>' +
-      '<div class="b-step" data-step="sauce"><div class="b-head"><span class="b-num">4</span><h3>Add sauce flavours</h3><small id="sauceHint"></small></div>' +
+      '<div class="b-step" data-step="sauce"><div class="b-head"><span class="b-num">3</span><h3>Add sauce flavours</h3><small id="sauceHint"></small></div>' +
         '<div class="opt-grid opt-grid--chips">' + sauceOpts + '</div></div>' +
       '<div class="b-foot">' +
         '<div class="b-summary" id="bSummary"></div>' +
@@ -468,7 +456,7 @@
         x.setAttribute('aria-pressed', x === b ? 'true' : 'false');
       });
       renderItemStep();
-      $$('input[name=seasoning], input[name=sauce]', builder).forEach(function(i){ i.checked = false; });
+      $$('input[name=sauce]', builder).forEach(function(i){ i.checked = false; });
       qty = 1;
       updateBuilder();
     });
@@ -513,11 +501,9 @@
 
   function currentSelection(){
     var it = $('input[name=item]:checked', builder);
-    var s = $('input[name=seasoning]:checked', builder);
     return {
       base: selectedBase,
       item: it ? it.value : null,
-      seasoning: s ? s.value : null,
       sauces: $$('input[name=sauce]:checked', builder).map(function(i){ return i.value; }),
       qty: qty
     };
@@ -528,9 +514,7 @@
 
     var sel = currentSelection();
     $('[data-step=item]', builder).classList.toggle('done', !!sel.item);
-    $('[data-step=seasoning]', builder).classList.toggle('done', !!sel.seasoning);
     $('[data-step=sauce]', builder).classList.toggle('done', sel.sauces.length > 0);
-    if(sel.seasoning) $('[data-step=seasoning]', builder).classList.remove('missing');
     if(sel.sauces.length) $('[data-step=sauce]', builder).classList.remove('missing');
 
     $('#bQty').textContent = qty;
@@ -553,29 +537,27 @@
     $('#sauceHint').innerHTML = 'Choose up to ' + max + ' &middot; free';
 
     var parts = [];
-    if(sel.seasoning) parts.push(sel.seasoning);
     if(sel.sauces.length) parts.push(sel.sauces.join(', '));
     $('#bSummary').innerHTML = '<strong>' + (item ? esc(item.name) : 'Your box') + '</strong>' +
-      (parts.length ? esc(parts.join(' · ')) : 'Pick a seasoning and at least one sauce');
+      (parts.length ? esc(parts.join(' · ')) : 'Pick at least one sauce');
   }
 
   function addBox(){
     var sel = currentSelection();
     var missing = null;
-    if(!sel.seasoning) missing = 'seasoning';
-    else if(!sel.sauces.length) missing = 'sauce';
+    if(!sel.sauces.length) missing = 'sauce';
     if(missing){
       var step = $('[data-step=' + missing + ']', builder);
       step.classList.add('missing');
       step.scrollIntoView({behavior:'smooth', block:'center'});
-      toast(missing === 'seasoning' ? 'Choose a seasoning for this box' : 'Pick at least one sauce');
+      toast('Pick at least one sauce');
       return;
     }
-    addLine({base: sel.base, item: sel.item, seasoning: sel.seasoning, sauces: sel.sauces, qty: sel.qty});
+    addLine({base: sel.base, item: sel.item, sauces: sel.sauces, qty: sel.qty});
     toast(sel.qty > 1 ? sel.qty + ' boxes added to your cart' : 'Box added to your cart');
 
     /* reset for the next box, keeping the base and item */
-    $$('input[name=seasoning], input[name=sauce]', builder).forEach(function(i){ i.checked = false; });
+    $$('input[name=sauce]', builder).forEach(function(i){ i.checked = false; });
     qty = 1;
     updateBuilder();
   }
@@ -636,7 +618,6 @@
         return '<div class="line">' +
           '<span class="line-no">' + (i + 1) + '</span>' +
           '<div><h4>' + esc(f.name) + '</h4><dl>' +
-            '<dt>Seasoning: </dt><dd>' + esc(l.seasoning) + '</dd>' +
             '<dt>Sauces: </dt><dd>' + esc(l.sauces.join(', '))+'</dd>' +
             '<dt>Each: </dt><dd>' + money(unitPrice(l)) + '</dd>' +
           '</dl></div>' +
@@ -747,7 +728,6 @@
     cart.forEach(function(l, i){
       var f = itemById(l.base, l.item);
       lines.push((i + 1) + '. *' + f.name + '* x' + l.qty + ' - ' + money(unitPrice(l) * l.qty));
-      lines.push('   Seasoning: ' + l.seasoning);
       lines.push('   Sauces: ' + l.sauces.join(', '));
       lines.push('   Price: ' + money(unitPrice(l)) + ' each');
     });

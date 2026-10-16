@@ -9,7 +9,7 @@
       alt: 'A generous pile of freshly fried, golden crispy fries',
       badge: 'Lahore<br>since 2023',
       heading: 'The crispiest<br>fries in Lahore',
-      text: 'Fried fresh to order and shaken in bold seasonings.',
+      text: 'Fried fresh to order and served with bold dips.',
       cta: {label: 'Order now', href: 'order.html'}
     },
     {
@@ -25,7 +25,7 @@
       alt: 'A wooden tray piled high with golden fries',
       badge: '11<br>sauces',
       heading: 'Dip into<br>something bold',
-      text: 'Eleven sauces and two dry seasonings, always free with your box.',
+      text: 'Eleven sauces, always free with your box.',
       cta: {label: 'Explore sauces', href: 'menu.html#sauces'}
     },
     {
