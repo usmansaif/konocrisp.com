@@ -7,7 +7,7 @@
 <meta name="description" content="Get in touch with Kono Crisp. Call or WhatsApp 0323 8800909, email konocrisp@gmail.com, or find us on Model Town Link Road, Lahore.">
 <meta name="author" content="Kono Crisp">
 <meta name="robots" content="index, follow">
-<meta name="theme-color" content="#0D3182">
+<meta name="theme-color" content="#10263B">
 <link rel="canonical" href="https://konocrisp.com/contact.html">
 
 <!-- Geo / local SEO -->
@@ -38,10 +38,9 @@
 <meta name="apple-mobile-web-app-title" content="Kono Crisp">
 <meta name="mobile-web-app-capable" content="yes">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css?v=10">
+<link rel="preload" href="assets/fonts/ranchers-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/nunito-variable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/style.css?v=11">
 
 <script type="application/ld+json">
 {
@@ -69,134 +68,115 @@
 </script>
 </head>
 <body>
-
-<!-- ===== Navbar ===== -->
+<div class="page">
+<!-- ===== Header ===== -->
 <header class="navbar" id="navbar">
   <div class="container navbar-inner">
-    <a href="index.html" class="logo" aria-label="Kono Crisp home">
-      <span class="logo-badge"><img src="assets/logo-icon.png?v=8" alt="" width="46" height="46"></span>
-      <span class="logo-text"><span class="logo-word">Kono Crisp</span><span class="logo-tag">Fry Day, Every Day</span></span>
+    <button type="button" class="menu-btn" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+      <span class="menu-btn-icon" aria-hidden="true"><span></span><span></span><span></span></span>
+      <span class="menu-btn-text">Menu</span>
+    </button>
+    <a href="index.html" class="brand" aria-label="Kono Crisp home">
+      <img class="brand-stacked" src="assets/logo/lockup-stacked-white.svg" alt="Kono Crisp" width="111" height="104">
+      <img class="brand-wordmark" src="assets/logo/wordmark-white.svg" alt="Kono Crisp" width="120" height="26">
     </a>
-
-    <nav class="nav-links" aria-label="Primary">
-      <a href="index.html">Homepage</a>
-      <a href="menu.html">Menu</a>
-      <a href="visit.html">Location</a>
-      <a href="about.html">Our story</a>
-      <a href="contact.html" aria-current="page">Contact</a>
-    </nav>
-
     <div class="nav-cta">
-      <a href="order.html" class="btn btn-white">Order now</a>
       <button type="button" class="cart-btn" data-open-cart aria-label="Open cart"><svg viewBox="0 0 24 24" fill="none"><path d="M3 4h2l2.4 11.2a1 1 0 001 .8h9.2a1 1 0 001-.8L20 8H6.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9" cy="20" r="1.4" fill="currentColor"/><circle cx="17" cy="20" r="1.4" fill="currentColor"/></svg><span class="cart-count" hidden>0</span></button>
-      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
-        <span></span><span></span><span></span>
-      </button>
+      <a href="order.html" class="btn btn--primary">Order now <img class="arrow" src="assets/svg/arrow-right-dark.svg" alt="" width="21" height="15"></a>
     </div>
   </div>
 </header>
 
-<nav class="mobile-menu" id="mobileMenu" aria-label="Mobile">
-      <a href="index.html">Homepage</a>
-      <a href="menu.html">Menu</a>
-      <a href="visit.html">Location</a>
-      <a href="about.html">Our story</a>
-      <a href="contact.html" aria-current="page">Contact</a>
-  <a href="order.html" class="btn btn-white btn-block">Order now</a>
+<nav class="mobile-menu" id="mobileMenu" aria-label="Primary">
+  <div class="mobile-menu-links"><a href="index.html">Homepage</a><a href="menu.html">Menu</a><a href="visit.html">Location</a><a href="about.html">Our story</a><a href="contact.html" aria-current="page">Contact</a></div>
+  <div class="mobile-menu-foot">
+    <a href="mailto:konocrisp@gmail.com" class="info-link"><small><img src="assets/svg/Vector.svg" alt="" width="18" height="18">Email us</small><strong>konocrisp@gmail.com</strong></a>
+    <a href="tel:+923238800909" class="info-link"><small><img src="assets/svg/Vector-1.svg" alt="" width="18" height="18">Call us</small><strong>0323 8800909</strong></a>
+    <a href="order.html" class="btn btn--primary">Order now <img class="arrow" src="assets/svg/arrow-right-dark.svg" alt="" width="21" height="15"></a>
+  </div>
 </nav>
 
 <main>
-<!-- ===== Hero ===== -->
-<section class="hero page-hero">
-  <div class="hero-media"><img src="https://images.unsplash.com/photo-1647705195905-671a25be159d?w=1800&q=80&auto=format&fit=crop" alt="" fetchpriority="high"></div>
-  <div class="hero-inner">
+<section class="page-hero">
+  <div class="hero-media"><img src="assets/photos/dips-tray-1536.avif" srcset="assets/photos/dips-tray-768.avif 768w, assets/photos/dips-tray-1280.avif 1280w, assets/photos/dips-tray-1536.avif 1536w" sizes="100vw" alt="" fetchpriority="high"></div>
+  <div class="container page-hero-inner">
     <h1>Get in touch</h1>
     <p>Questions, feedback or a big order &mdash; we&rsquo;re one call or message away.</p>
-    <div class="hero-actions"><a href="tel:+923238800909" class="btn btn-white">call 0323 8800909</a><a href="https://wa.me/923238800909" target="_blank" rel="noopener" class="btn btn-pale">whatsapp us</a></div>
+    <div class="btn-row" style="justify-content:center"><a href="tel:+923238800909" class="btn btn--primary">Call 0323 8800909</a><a href="https://wa.me/923238800909" target="_blank" rel="noopener" class="btn btn--ghost-light">WhatsApp us</a></div>
     <div class="crumbs"><a href="index.html">Home</a><span>/</span><span>Contact</span></div>
   </div>
+  <div class="scallop scallop--bottom" aria-hidden="true"></div>
 </section>
 
 <!-- ===== Contact methods ===== -->
-<section>
+<section class="sec">
   <div class="container">
-    <h2 class="title reveal">How would you like to reach us?</h2>
-
+    <div class="heading-block"><h2 class="heading reveal">How would you like to reach us?</h2></div>
     <div class="choice-grid reveal">
-      <a href="tel:+923238800909" class="choice is-active"><svg viewBox="0 0 100 120" fill="none"><rect x="28" y="12" width="44" height="96" rx="8" fill="currentColor"/><rect x="34" y="24" width="32" height="64" rx="2" fill="var(--card)"/><circle cx="50" cy="98" r="4" fill="var(--card)"/></svg><span>Call<small>0323 8800909</small></span></a>
+      <a href="tel:+923238800909" class="choice is-active"><svg viewBox="0 0 100 120" fill="none"><rect x="28" y="12" width="44" height="96" rx="8" fill="currentColor"/><rect x="34" y="24" width="32" height="64" rx="2" fill="#fff"/><circle cx="50" cy="98" r="4" fill="#fff"/></svg><span>Call<small>0323 8800909</small></span></a>
       <a href="https://wa.me/923238800909" target="_blank" rel="noopener" class="choice"><svg viewBox="0 0 100 120" fill="none"><path d="M50 10a38 38 0 00-32.8 57L12 110l17.6-5.2A38 38 0 1050 10z" stroke="currentColor" stroke-width="6" stroke-linejoin="round"/><path d="M34 46c-1.5 10 12 24 22 22" stroke="currentColor" stroke-width="6" stroke-linecap="round"/></svg><span>WhatsApp<small>0323 8800909</small></span></a>
       <a href="mailto:konocrisp@gmail.com" class="choice"><svg viewBox="0 0 100 120" fill="none"><rect x="12" y="34" width="76" height="54" rx="6" stroke="currentColor" stroke-width="6" stroke-linejoin="round"/><path d="M16 40l34 26 34-26" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Email<small>konocrisp@gmail.com</small></span></a>
       <a href="https://www.google.com/maps/search/?api=1&query=Kono+Crisp+Model+Town+Link+Road+Lahore" target="_blank" rel="noopener" class="choice"><svg viewBox="0 0 100 120" fill="none"><path d="M50 114S12 72 12 44a38 38 0 0176 0c0 28-38 70-38 70z" stroke="currentColor" stroke-width="5" stroke-linejoin="round"/><circle cx="50" cy="44" r="14" stroke="currentColor" stroke-width="5"/></svg><span>Visit<small>Model Town Link Road</small></span></a>
     </div>
-
     <div class="divider reveal">Our details</div>
-
     <div class="loc-card reveal">
-      <div class="loc-photo"><img src="https://images.unsplash.com/photo-1576107232684-1279f390859f?w=800&q=80&auto=format&fit=crop" alt="A tray of freshly fried Kono Crisp fries" loading="lazy"></div>
+      <div class="loc-photo"><img src="assets/photos/fries-tray-1280.avif" srcset="assets/photos/fries-tray-768.avif 768w, assets/photos/fries-tray-1280.avif 1280w" sizes="(max-width:767px) 100vw, 30vw" alt="A tray of freshly fried Kono Crisp fries" loading="lazy"></div>
       <div class="loc-body">
         <span class="loc-city">Lahore</span>
         <h3>Kono Crisp</h3>
-        <span class="loc-meta"><span class="dot"></span>Model Town Link Road, Lahore</span>
-        <span class="loc-meta"><span class="dot"></span><a href="tel:+923238800909">0323 8800909</a></span>
-        <span class="loc-meta"><span class="dot"></span><a href="mailto:konocrisp@gmail.com">konocrisp@gmail.com</a></span>
-        <span class="loc-meta"><span class="dot"></span>Open daily, takeaway &amp; delivery</span>
-        <a href="https://www.google.com/maps/search/?api=1&query=Kono+Crisp+Model+Town+Link+Road+Lahore" target="_blank" rel="noopener" class="arrow-link">View on maps <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9.5" stroke="currentColor" stroke-width="1.5"/><path d="M10.5 8.5L14 12l-3.5 3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <span class="loc-meta"><span class="dot"></span>Model Town Link Road, Lahore</span><span class="loc-meta"><span class="dot"></span><a href="tel:+923238800909">0323 8800909</a></span><span class="loc-meta"><span class="dot"></span><a href="mailto:konocrisp@gmail.com">konocrisp@gmail.com</a></span><span class="loc-meta"><span class="dot"></span>Open daily, takeaway &amp; delivery</span>
+        <a href="https://www.google.com/maps/search/?api=1&query=Kono+Crisp+Model+Town+Link+Road+Lahore" target="_blank" rel="noopener" class="btn btn--secondary">View on maps <img class="arrow" src="assets/svg/arrow-right-dark.svg" alt="" width="21" height="15"></a>
       </div>
       <div class="loc-map"><iframe src="https://www.google.com/maps?q=Kono+Crisp+Model+Town+Link+Road+Lahore&output=embed" title="Map showing Kono Crisp on Model Town Link Road, Lahore" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div>
     </div>
   </div>
 </section>
 
-<!-- ===== Order CTA ===== -->
-<section class="order-cta">
-  <div class="container order-cta-inner reveal">
-    <div>
-      <h2>Ready for the crunch?</h2>
-      <p>Build your box with fries, seasoning and up to two free sauces, then send it to us on WhatsApp.</p>
+<section class="sec" id="order-cta">
+  <div class="container">
+    <div class="heading-block"><h2 class="heading reveal">Ready for the Crunch?</h2></div>
+    <div class="crunch reveal">
+      <div class="crunch-img"><img src="assets/photos/sharing-spread-1536.avif" srcset="assets/photos/sharing-spread-768.avif 768w, assets/photos/sharing-spread-1280.avif 1280w, assets/photos/sharing-spread-1536.avif 1536w" sizes="(max-width:991px) 100vw, 50vw" alt="A Kono Crisp sharing spread of fries, samosas and dips" loading="lazy"></div>
+      <div class="crunch-panel">
+        <span class="chip chip--gold">Open daily &middot; 12 PM &ndash; 12 AM</span>
+        <h3 class="crunch-title">Build your box</h3>
+        <p class="crunch-text">Pick your fries or samosas, a seasoning and your free sauces. Send it to us on WhatsApp and we&rsquo;ll start frying.</p>
+        <p class="crunch-price"><span>Fries from Rs. 350</span><span>Samosas from Rs. 80</span></p>
+        <a href="order.html" class="btn btn--primary">Order now <img class="arrow" src="assets/svg/arrow-right-dark.svg" alt="" width="21" height="15"></a>
+        <div class="crunch-contact"><a href="tel:+923238800909">Call 0323 8800909</a><a href="https://wa.me/923238800909" target="_blank" rel="noopener">WhatsApp</a><a href="https://www.google.com/maps/search/?api=1&query=Kono+Crisp+Model+Town+Link+Road+Lahore" target="_blank" rel="noopener">Directions</a></div>
+        <p class="crunch-meta">Model Town Link Road, Lahore &middot; Takeaway &amp; delivery</p>
+      </div>
     </div>
-    <a href="order.html" class="btn btn-white">Order now</a>
   </div>
 </section>
 </main>
-
 <!-- ===== Footer ===== -->
 <footer>
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-logo"><a href="index.html" class="logo" aria-label="Kono Crisp home">
-      <span class="logo-badge"><img src="assets/logo-icon.png?v=8" alt="" width="46" height="46"></span>
-      <span class="logo-text"><span class="logo-word">Kono Crisp</span><span class="logo-tag">Fry Day, Every Day</span></span>
-    </a></div>
-      <div class="footer-col">
-        <h4>Company information</h4>
-        <p>Kono Crisp</p>
-        <a href="https://www.google.com/maps/search/?api=1&query=Kono+Crisp+Model+Town+Link+Road+Lahore" target="_blank" rel="noopener">Model Town Link Road, Lahore</a>
-        <a href="mailto:konocrisp@gmail.com">konocrisp@gmail.com</a>
-        <a href="tel:+923238800909">0323 8800909</a>
+  <div class="footer-main">
+    <div class="container">
+      <div class="footer-widget">
+        <div><h4 class="widget-title">Company</h4><ul class="footer-list"><li><a href="index.html" class="footer-link">Homepage</a></li><li><a href="menu.html" class="footer-link">Menu</a></li><li><a href="visit.html" class="footer-link">Location</a></li><li><a href="about.html" class="footer-link">Our story</a></li><li><a href="contact.html" class="footer-link">Contact</a></li></ul></div>
+        <div><h4 class="widget-title">Opening hours</h4><div class="footer-list">
+          <span class="footer-text">Mon &ndash; Sun : 12 PM &ndash; 12 AM</span>
+          <span class="footer-text">Takeaway : Hot &amp; ready to go</span>
+          <span class="footer-text">Delivery : Rs. 100 flat</span>
+          <span class="footer-text">Call to order : 0323 8800909</span></div></div>
+        <div><h4 class="widget-title">Socials</h4><div class="footer-socials"><a href="https://www.facebook.com/konocrisp" target="_blank" rel="noopener" class="social-link"><svg viewBox="0 0 24 24" fill="none"><path d="M14 21v-7h2.4l.4-3H14V9.2c0-.9.3-1.5 1.6-1.5H17V5.1C16.7 5 15.8 5 14.8 5c-2.1 0-3.6 1.3-3.6 3.7V11H9v3h2.2v7" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg><span>Facebook</span></a><a href="https://www.instagram.com/konocrisp/" target="_blank" rel="noopener" class="social-link"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.8"/><circle cx="17.4" cy="6.6" r="1.2" fill="currentColor"/></svg><span>Instagram</span></a><a href="https://api.whatsapp.com/send?phone=923238800909" target="_blank" rel="noopener" class="social-link"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-8.6 15.1L2 22l5-1.3A10 10 0 1012 2zm0 18.2a8.2 8.2 0 01-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1112 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 01-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 00-.7.3 3 3 0 00-.9 2.2 5.2 5.2 0 001.1 2.7 11.8 11.8 0 004.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.8-1.2.2-.6.2-1.1.1-1.2l-.5-.3z"/></svg><span>WhatsApp</span></a><a href="https://www.tiktok.com/@konocrisp" target="_blank" rel="noopener" class="social-link"><svg viewBox="0 0 24 24" fill="none"><path d="M14 4v9.5a2.5 2.5 0 11-2-2.45V9a4.5 4.5 0 104.5 4.5V9.2a5.4 5.4 0 003 1V8.1a3.4 3.4 0 01-2.2-1.3A3.6 3.6 0 0116.5 4H14z" fill="currentColor"/></svg><span>TikTok</span></a></div></div>
+        <div><h4 class="widget-title">Company information</h4><div class="footer-list">
+          <span class="footer-text">Kono Crisp</span>
+          <a href="https://www.google.com/maps/search/?api=1&query=Kono+Crisp+Model+Town+Link+Road+Lahore" target="_blank" rel="noopener" class="footer-link">Model Town Link Road, Lahore</a>
+          <a href="mailto:konocrisp@gmail.com" class="footer-link">konocrisp@gmail.com</a>
+          <a href="tel:+923238800909" class="footer-link">0323 8800909</a></div></div>
       </div>
-      <div class="footer-col">
-        <h4>Socials</h4>
-        <div class="socials">
-          <a href="https://www.facebook.com/konocrisp" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none"><path d="M14 21v-7h2.4l.4-3H14V9.2c0-.9.3-1.5 1.6-1.5H17V5.1C16.7 5 15.8 5 14.8 5c-2.1 0-3.6 1.3-3.6 3.7V11H9v3h2.2v7" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></a>
-          <a href="https://www.instagram.com/konocrisp/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.8"/><circle cx="17.4" cy="6.6" r="1.2" fill="currentColor"/></svg></a>
-          <a href="https://api.whatsapp.com/send?phone=923238800909" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-8.6 15.1L2 22l5-1.3A10 10 0 1012 2zm0 18.2a8.2 8.2 0 01-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1112 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 01-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 00-.7.3 3 3 0 00-.9 2.2 5.2 5.2 0 001.1 2.7 11.8 11.8 0 004.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.8-1.2.2-.6.2-1.1.1-1.2l-.5-.3z"/></svg></a>
-          <a href="https://www.tiktok.com/@konocrisp" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="none"><path d="M14 4v9.5a2.5 2.5 0 11-2-2.45V9a4.5 4.5 0 104.5 4.5V9.2a5.4 5.4 0 003 1V8.1a3.4 3.4 0 01-2.2-1.3A3.6 3.6 0 0116.5 4H14z" fill="currentColor"/></svg></a>
-        </div>
-      </div>
-      <div class="footer-links">
-        <a href="menu.html">View our full menu <svg viewBox="0 0 24 24" fill="none"><path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-        <a href="visit.html">Find our location <svg viewBox="0 0 24 24" fill="none"><path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-        <a href="about.html">Our story <svg viewBox="0 0 24 24" fill="none"><path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-        <a href="contact.html">Get in touch <svg viewBox="0 0 24 24" fill="none"><path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span>&copy; 2026 Kono Crisp. All rights reserved.</span>
-      <span>Fry Day, Every Day &middot; Lahore since 2023</span>
+      <a href="index.html" class="footer-logo" aria-label="Kono Crisp home"><img src="assets/logo/lockup-stacked-white.svg" alt="Kono Crisp" width="240" height="225" loading="lazy" style="width:min(100%,240px)"></a>
     </div>
   </div>
+  <div class="footer-bottom"><div class="container">
+    <span>&copy; 2026 Kono Crisp. All rights reserved.</span>
+    <span>Fry Day, Every Day &middot; Lahore since 2023</span>
+  </div></div>
 </footer>
-
+</div>
 
 <!-- ===== Cart bar, drawer & toast ===== -->
 <div class="cart-bar" id="cartBar">
@@ -274,7 +254,7 @@
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-<script src="assets/js/main.js?v=10"></script>
-<script src="assets/js/order.js?v=10"></script>
+<script src="assets/js/main.js?v=11"></script>
+<script src="assets/js/order.js?v=11"></script>
 </body>
 </html>

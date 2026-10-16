@@ -7,7 +7,7 @@
 <meta name="description" content="The full Kono Crisp menu: 2 dry seasonings, Chaat Masala and Ember BBQ, and 11 sauces &amp; dips including CRACK Sauce and Peri-Peri Volcano.">
 <meta name="author" content="Kono Crisp">
 <meta name="robots" content="index, follow">
-<meta name="theme-color" content="#0D3182">
+<meta name="theme-color" content="#10263B">
 <link rel="canonical" href="https://konocrisp.com/menu.html">
 
 <!-- Geo / local SEO -->
@@ -38,10 +38,9 @@
 <meta name="apple-mobile-web-app-title" content="Kono Crisp">
 <meta name="mobile-web-app-capable" content="yes">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css?v=10">
+<link rel="preload" href="assets/fonts/ranchers-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/nunito-variable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/style.css?v=11">
 
 <script type="application/ld+json">
 {
@@ -69,154 +68,126 @@
 </script>
 </head>
 <body>
-
-<!-- ===== Navbar ===== -->
+<div class="page">
+<!-- ===== Header ===== -->
 <header class="navbar" id="navbar">
   <div class="container navbar-inner">
-    <a href="index.html" class="logo" aria-label="Kono Crisp home">
-      <span class="logo-badge"><img src="assets/logo-icon.png?v=8" alt="" width="46" height="46"></span>
-      <span class="logo-text"><span class="logo-word">Kono Crisp</span><span class="logo-tag">Fry Day, Every Day</span></span>
+    <button type="button" class="menu-btn" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+      <span class="menu-btn-icon" aria-hidden="true"><span></span><span></span><span></span></span>
+      <span class="menu-btn-text">Menu</span>
+    </button>
+    <a href="index.html" class="brand" aria-label="Kono Crisp home">
+      <img class="brand-stacked" src="assets/logo/lockup-stacked-white.svg" alt="Kono Crisp" width="111" height="104">
+      <img class="brand-wordmark" src="assets/logo/wordmark-white.svg" alt="Kono Crisp" width="120" height="26">
     </a>
-
-    <nav class="nav-links" aria-label="Primary">
-      <a href="index.html">Homepage</a>
-      <a href="menu.html" aria-current="page">Menu</a>
-      <a href="visit.html">Location</a>
-      <a href="about.html">Our story</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-
     <div class="nav-cta">
-      <a href="order.html" class="btn btn-white">Order now</a>
       <button type="button" class="cart-btn" data-open-cart aria-label="Open cart"><svg viewBox="0 0 24 24" fill="none"><path d="M3 4h2l2.4 11.2a1 1 0 001 .8h9.2a1 1 0 001-.8L20 8H6.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9" cy="20" r="1.4" fill="currentColor"/><circle cx="17" cy="20" r="1.4" fill="currentColor"/></svg><span class="cart-count" hidden>0</span></button>
-      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
-        <span></span><span></span><span></span>
-      </button>
+      <a href="order.html" class="btn btn--primary">Order now <img class="arrow" src="assets/svg/arrow-right-dark.svg" alt="" width="21" height="15"></a>
     </div>
   </div>
 </header>
 
-<nav class="mobile-menu" id="mobileMenu" aria-label="Mobile">
-      <a href="index.html">Homepage</a>
-      <a href="menu.html" aria-current="page">Menu</a>
-      <a href="visit.html">Location</a>
-      <a href="about.html">Our story</a>
-  <a href="contact.html">Contact</a>
-  <a href="order.html" class="btn btn-white btn-block">Order now</a>
+<nav class="mobile-menu" id="mobileMenu" aria-label="Primary">
+  <div class="mobile-menu-links"><a href="index.html">Homepage</a><a href="menu.html" aria-current="page">Menu</a><a href="visit.html">Location</a><a href="about.html">Our story</a><a href="contact.html">Contact</a></div>
+  <div class="mobile-menu-foot">
+    <a href="mailto:konocrisp@gmail.com" class="info-link"><small><img src="assets/svg/Vector.svg" alt="" width="18" height="18">Email us</small><strong>konocrisp@gmail.com</strong></a>
+    <a href="tel:+923238800909" class="info-link"><small><img src="assets/svg/Vector-1.svg" alt="" width="18" height="18">Call us</small><strong>0323 8800909</strong></a>
+    <a href="order.html" class="btn btn--primary">Order now <img class="arrow" src="assets/svg/arrow-right-dark.svg" alt="" width="21" height="15"></a>
+  </div>
 </nav>
 
 <main>
-<!-- ===== Hero ===== -->
-<section class="hero page-hero">
-  <div class="hero-media"><img src="https://images.unsplash.com/photo-1647705195905-671a25be159d?w=1800&q=80&auto=format&fit=crop" alt="" fetchpriority="high"></div>
-  <div class="hero-inner">
+<section class="page-hero">
+  <div class="hero-media"><img src="assets/photos/fries-tray-1536.avif" srcset="assets/photos/fries-tray-768.avif 768w, assets/photos/fries-tray-1280.avif 1280w, assets/photos/fries-tray-1536.avif 1536w" sizes="100vw" alt="" fetchpriority="high"></div>
+  <div class="container page-hero-inner">
     <h1>Our menu</h1>
     <p>Golden fries, fried fresh. Pick a seasoning, then add up to two free dips.</p>
-    <div class="hero-actions"><a href="order.html" class="btn btn-white">Order now</a></div>
-    
+    <a href="order.html" class="btn btn--primary">Order now <img class="arrow" src="assets/svg/arrow-right-dark.svg" alt="" width="21" height="15"></a>
     <div class="crumbs"><a href="index.html">Home</a><span>/</span><span>Menu</span></div>
   </div>
+  <div class="scallop scallop--bottom" aria-hidden="true"></div>
 </section>
 
 <!-- ===== How it works ===== -->
-<section>
+<section class="sec">
   <div class="container">
-    <h2 class="title reveal">Build your box in three steps</h2>
-
-    <div class="steps reveal">
-      <div class="step"><span class="step-num">1</span><h3>Grab your fries</h3><p>Hot, golden and fried fresh to order, every single batch.</p></div>
-      <div class="step"><span class="step-num">2</span><h3>Pick a seasoning</h3><p>Two dry seasonings, Chaat Masala and Ember BBQ.</p></div>
-      <div class="step"><span class="step-num">3</span><h3>Add your dips</h3><p>Eleven sauces &amp; dips. Start with CRACK Sauce. Thank us later.</p></div>
-    </div>
+    <div class="heading-block"><h2 class="heading reveal">Build your box in three steps</h2></div>
+    <div class="steps reveal"><div class="step"><span class="step-num">1</span><h3>Grab your fries</h3><p>Hot, golden and fried fresh to order, every single batch.</p></div><div class="step"><span class="step-num">2</span><h3>Pick a seasoning</h3><p>Two dry seasonings, Chaat Masala and Ember BBQ.</p></div><div class="step"><span class="step-num">3</span><h3>Add your dips</h3><p>Eleven sauces &amp; dips. Start with CRACK Sauce. Thank us later.</p></div></div>
   </div>
 </section>
 
 <!-- ===== Seasonings ===== -->
-<section id="seasonings" class="menu-anchor" style="padding-top:0">
+<section id="seasonings" class="menu-anchor" style="padding-bottom:clamp(72px,9vw,128px)">
   <div class="container">
     <nav class="menu-tabs reveal" aria-label="Menu categories">
       <a href="#seasonings" class="menu-tab active">Dry seasonings</a>
       <a href="#sauces" class="menu-tab">Sauces &amp; dips</a>
     </nav>
-    <h2 class="title reveal">2 dry seasonings</h2>
-    <div class="menu-grid">
-      <article class="menu-card reveal"><div class="bowl bowl--dry" style="--sauce:#B8672C" aria-hidden="true"></div><h3>Chaat Masala</h3><p>Tangy street-style chaat spice with a desi kick.</p></article>
-      <article class="menu-card reveal"><div class="bowl bowl--dry" style="--sauce:#8A3A1E" aria-hidden="true"></div><h3>Ember BBQ</h3><p>Smoky, sweet barbecue dust with a charred finish.</p></article>
+    <div class="heading-block"><h2 class="heading reveal">2 dry seasonings</h2></div>
+    <div class="season-layout">
+      <div class="season-figure reveal"><img src="assets/photos/seasoning-shake-1536.avif" srcset="assets/photos/seasoning-shake-768.avif 768w, assets/photos/seasoning-shake-1280.avif 1280w, assets/photos/seasoning-shake-1536.avif 1536w" sizes="(max-width:991px) 100vw, 50vw" alt="Seasoning being shaken over fresh fries" loading="lazy"></div>
+      <div class="season-grid"><article class="season-card reveal"><span class="season-swatch" style="--c:#B8672C" aria-hidden="true"></span><div class="season-body"><span class="chip">Dry seasoning &middot; Free</span><h3 class="season-name">Chaat Masala</h3><p class="season-text">Tangy street-style chaat spice with a desi kick.</p></div></article><article class="season-card reveal"><span class="season-swatch" style="--c:#8A3A1E" aria-hidden="true"></span><div class="season-body"><span class="chip">Dry seasoning &middot; Free</span><h3 class="season-name">Ember BBQ</h3><p class="season-text">Smoky, sweet barbecue dust with a charred finish.</p></div></article></div>
     </div>
   </div>
 </section>
 
 <!-- ===== Sauces ===== -->
-<section class="sauces menu-anchor" id="sauces" style="padding:80px 0">
+<section class="sec sec--navy menu-anchor" id="sauces">
+  <div class="scallop scallop--top" aria-hidden="true"></div><div class="scallop scallop--bottom" aria-hidden="true"></div>
   <div class="container">
-    <h2 class="title title--light reveal">Choose from 11 sauces &amp; dips</h2>
-    <div class="sauce-grid">
-      <div class="sauce"><h3>CRACK Sauce</h3><div class="bowl bowl--photo" style="--sauce:#EFA640" aria-hidden="true"><img class="bowl-photo" src="assets/img/sauces/crack-sauce.jpg" alt="" loading="lazy"><span class="bowl-tag">Signature</span></div><p>Our most addictive sauce. One dip and you&rsquo;re hooked.</p></div>
-      <div class="sauce"><h3>Ghost Garlic</h3><div class="bowl bowl--photo" style="--sauce:#F4EFDD" aria-hidden="true"><img class="bowl-photo" src="assets/img/sauces/ghost-garlic.jpg" alt="" loading="lazy"></div><p>Bold, punchy garlic, gone before you know it.</p></div>
-      <div class="sauce"><h3>Golden Cheese</h3><div class="bowl bowl--photo" style="--sauce:#F4B72E" aria-hidden="true"><img class="bowl-photo" src="assets/img/sauces/golden-cheese.jpg" alt="" loading="lazy"></div><p>Warm, velvety cheese sauce made for dunking.</p></div>
-      <div class="sauce"><h3>Honey Glaze</h3><div class="bowl bowl--photo" style="--sauce:#D98E1F" aria-hidden="true"><img class="bowl-photo" src="assets/img/sauces/honey-glaze.jpg" alt="" loading="lazy"></div><p>Sticky, golden sweetness for salty fries.</p></div>
-      <div class="sauce"><h3>Curry Twist</h3><div class="bowl bowl--photo" style="--sauce:#C98A2B" aria-hidden="true"><img class="bowl-photo" src="assets/img/sauces/curry-twist.jpg" alt="" loading="lazy"></div><p>Creamy curry with warm, aromatic spice.</p></div>
-      <div class="sauce"><h3>Green Fusion</h3><div class="bowl bowl--photo" style="--sauce:#6FA83A" aria-hidden="true"><img class="bowl-photo" src="assets/img/sauces/green-fusion.jpg" alt="" loading="lazy"></div><p>Fresh, herby green sauce with a zingy finish.</p></div>
-      <div class="sauce"><h3>Peri-Peri Volcano</h3><div class="bowl bowl--photo" style="--sauce:#C9361F" aria-hidden="true"><img class="bowl-photo" src="assets/img/sauces/peri-peri-volcano.jpg" alt="" loading="lazy"><span class="bowl-tag bowl-tag--hot">Hot</span></div><p>Fiery peri-peri that erupts with every bite.</p></div>
-      <div class="sauce"><h3>Frosty Mint</h3><div class="bowl bowl--photo" style="--sauce:#BFE3C8" aria-hidden="true"><img class="bowl-photo" src="assets/img/sauces/frosty-mint.jpg" alt="" loading="lazy"></div><p>Cool, creamy mint to calm the heat.</p></div>
-      <div class="sauce"><h3>Samurai Sauce</h3><div class="bowl bowl--photo" style="--sauce:#E0703A" aria-hidden="true"><img class="bowl-photo" src="assets/img/sauces/samurai-sauce.jpg" alt="" loading="lazy"></div><p>Creamy chilli mayo with a sharp, spicy edge.</p></div>
-      <div class="sauce"><h3>Smoky BBQ</h3><div class="bowl bowl--photo" style="--sauce:#5A1A12" aria-hidden="true"><img class="bowl-photo" src="assets/img/sauces/smoky-bbq.jpg" alt="" loading="lazy"></div><p>Classic slow-smoked barbecue sauce.</p></div>
-      <div class="sauce"><h3>Secret Sauce</h3><div class="bowl bowl--photo" style="--sauce:#E6B98A" aria-hidden="true"><img class="bowl-photo" src="assets/img/sauces/secret-sauce.jpg" alt="" loading="lazy"><span class="bowl-tag">Secret</span></div><p>Ask us what&rsquo;s in it. We won&rsquo;t tell.</p></div>
+    <div class="heading-block">
+      <h2 class="heading heading--light reveal">Choose from 11 sauces &amp; dips</h2>
+      <p class="lede lede--light">Free with every box: up to two on fries, one on a single samosa, two when you order two or more.</p>
     </div>
+    <div class="sauce-grid"><article class="sauce-card reveal" style="--c:#EFA640"><div class="sauce-top"><img class="sauce-thumb" src="assets/img/sauces/crack-sauce.jpg" alt="" width="64" height="64" loading="lazy"><span class="chip chip--gold">Signature</span></div><h3 class="sauce-name">CRACK Sauce</h3><p class="sauce-text">Our most addictive sauce. One dip and you&rsquo;re hooked.</p></article><article class="sauce-card reveal" style="--c:#F4EFDD"><div class="sauce-top"><img class="sauce-thumb" src="assets/img/sauces/ghost-garlic.jpg" alt="" width="64" height="64" loading="lazy"></div><h3 class="sauce-name">Ghost Garlic</h3><p class="sauce-text">Bold, punchy garlic, gone before you know it.</p></article><article class="sauce-card reveal" style="--c:#F4B72E"><div class="sauce-top"><img class="sauce-thumb" src="assets/img/sauces/golden-cheese.jpg" alt="" width="64" height="64" loading="lazy"></div><h3 class="sauce-name">Golden Cheese</h3><p class="sauce-text">Warm, velvety cheese sauce made for dunking.</p></article><article class="sauce-card reveal" style="--c:#D98E1F"><div class="sauce-top"><img class="sauce-thumb" src="assets/img/sauces/honey-glaze.jpg" alt="" width="64" height="64" loading="lazy"></div><h3 class="sauce-name">Honey Glaze</h3><p class="sauce-text">Sticky, golden sweetness for salty fries.</p></article><article class="sauce-card reveal" style="--c:#C98A2B"><div class="sauce-top"><img class="sauce-thumb" src="assets/img/sauces/curry-twist.jpg" alt="" width="64" height="64" loading="lazy"></div><h3 class="sauce-name">Curry Twist</h3><p class="sauce-text">Creamy curry with warm, aromatic spice.</p></article><article class="sauce-card reveal" style="--c:#6FA83A"><div class="sauce-top"><img class="sauce-thumb" src="assets/img/sauces/green-fusion.jpg" alt="" width="64" height="64" loading="lazy"></div><h3 class="sauce-name">Green Fusion</h3><p class="sauce-text">Fresh, herby green sauce with a zingy finish.</p></article><article class="sauce-card reveal" style="--c:#C9361F"><div class="sauce-top"><img class="sauce-thumb" src="assets/img/sauces/peri-peri-volcano.jpg" alt="" width="64" height="64" loading="lazy"><span class="chip chip--hot">Hot</span></div><h3 class="sauce-name">Peri-Peri Volcano</h3><p class="sauce-text">Fiery peri-peri that erupts with every bite.</p></article><article class="sauce-card reveal" style="--c:#BFE3C8"><div class="sauce-top"><img class="sauce-thumb" src="assets/img/sauces/frosty-mint.jpg" alt="" width="64" height="64" loading="lazy"></div><h3 class="sauce-name">Frosty Mint</h3><p class="sauce-text">Cool, creamy mint to calm the heat.</p></article><article class="sauce-card reveal" style="--c:#E0703A"><div class="sauce-top"><img class="sauce-thumb" src="assets/img/sauces/samurai-sauce.jpg" alt="" width="64" height="64" loading="lazy"></div><h3 class="sauce-name">Samurai Sauce</h3><p class="sauce-text">Creamy chilli mayo with a sharp, spicy edge.</p></article><article class="sauce-card reveal" style="--c:#5A1A12"><div class="sauce-top"><img class="sauce-thumb" src="assets/img/sauces/smoky-bbq.jpg" alt="" width="64" height="64" loading="lazy"></div><h3 class="sauce-name">Smoky BBQ</h3><p class="sauce-text">Classic slow-smoked barbecue sauce.</p></article><article class="sauce-card reveal" style="--c:#E6B98A"><div class="sauce-top"><img class="sauce-thumb" src="assets/img/sauces/secret-sauce.jpg" alt="" width="64" height="64" loading="lazy"><span class="chip chip--gold">Secret</span></div><h3 class="sauce-name">Secret Sauce</h3><p class="sauce-text">Ask us what&rsquo;s in it. We won&rsquo;t tell.</p></article></div>
   </div>
 </section>
 
-<!-- ===== Order CTA ===== -->
-<section class="order-cta">
-  <div class="container order-cta-inner reveal">
-    <div>
-      <h2>Ready for the crunch?</h2>
-      <p>Build your box with fries, seasoning and up to two free sauces, then send it to us on WhatsApp.</p>
+<section class="sec" id="order-cta">
+  <div class="container">
+    <div class="heading-block"><h2 class="heading reveal">Ready for the Crunch?</h2></div>
+    <div class="crunch reveal">
+      <div class="crunch-img"><img src="assets/photos/sharing-spread-1536.avif" srcset="assets/photos/sharing-spread-768.avif 768w, assets/photos/sharing-spread-1280.avif 1280w, assets/photos/sharing-spread-1536.avif 1536w" sizes="(max-width:991px) 100vw, 50vw" alt="A Kono Crisp sharing spread of fries, samosas and dips" loading="lazy"></div>
+      <div class="crunch-panel">
+        <span class="chip chip--gold">Open daily &middot; 12 PM &ndash; 12 AM</span>
+        <h3 class="crunch-title">Build your box</h3>
+        <p class="crunch-text">Pick your fries or samosas, a seasoning and your free sauces. Send it to us on WhatsApp and we&rsquo;ll start frying.</p>
+        <p class="crunch-price"><span>Fries from Rs. 350</span><span>Samosas from Rs. 80</span></p>
+        <a href="order.html" class="btn btn--primary">Order now <img class="arrow" src="assets/svg/arrow-right-dark.svg" alt="" width="21" height="15"></a>
+        <div class="crunch-contact"><a href="tel:+923238800909">Call 0323 8800909</a><a href="https://wa.me/923238800909" target="_blank" rel="noopener">WhatsApp</a><a href="https://www.google.com/maps/search/?api=1&query=Kono+Crisp+Model+Town+Link+Road+Lahore" target="_blank" rel="noopener">Directions</a></div>
+        <p class="crunch-meta">Model Town Link Road, Lahore &middot; Takeaway &amp; delivery</p>
+      </div>
     </div>
-    <a href="order.html" class="btn btn-white">Order now</a>
   </div>
 </section>
-
 </main>
-
 <!-- ===== Footer ===== -->
 <footer>
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-logo"><a href="index.html" class="logo" aria-label="Kono Crisp home">
-      <span class="logo-badge"><img src="assets/logo-icon.png?v=8" alt="" width="46" height="46"></span>
-      <span class="logo-text"><span class="logo-word">Kono Crisp</span><span class="logo-tag">Fry Day, Every Day</span></span>
-    </a></div>
-      <div class="footer-col">
-        <h4>Company information</h4>
-        <p>Kono Crisp</p>
-        <a href="https://www.google.com/maps/search/?api=1&query=Kono+Crisp+Model+Town+Link+Road+Lahore" target="_blank" rel="noopener">Model Town Link Road, Lahore</a>
-        <a href="mailto:konocrisp@gmail.com">konocrisp@gmail.com</a>
-        <a href="tel:+923238800909">0323 8800909</a>
+  <div class="footer-main">
+    <div class="container">
+      <div class="footer-widget">
+        <div><h4 class="widget-title">Company</h4><ul class="footer-list"><li><a href="index.html" class="footer-link">Homepage</a></li><li><a href="menu.html" class="footer-link">Menu</a></li><li><a href="visit.html" class="footer-link">Location</a></li><li><a href="about.html" class="footer-link">Our story</a></li><li><a href="contact.html" class="footer-link">Contact</a></li></ul></div>
+        <div><h4 class="widget-title">Opening hours</h4><div class="footer-list">
+          <span class="footer-text">Mon &ndash; Sun : 12 PM &ndash; 12 AM</span>
+          <span class="footer-text">Takeaway : Hot &amp; ready to go</span>
+          <span class="footer-text">Delivery : Rs. 100 flat</span>
+          <span class="footer-text">Call to order : 0323 8800909</span></div></div>
+        <div><h4 class="widget-title">Socials</h4><div class="footer-socials"><a href="https://www.facebook.com/konocrisp" target="_blank" rel="noopener" class="social-link"><svg viewBox="0 0 24 24" fill="none"><path d="M14 21v-7h2.4l.4-3H14V9.2c0-.9.3-1.5 1.6-1.5H17V5.1C16.7 5 15.8 5 14.8 5c-2.1 0-3.6 1.3-3.6 3.7V11H9v3h2.2v7" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg><span>Facebook</span></a><a href="https://www.instagram.com/konocrisp/" target="_blank" rel="noopener" class="social-link"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.8"/><circle cx="17.4" cy="6.6" r="1.2" fill="currentColor"/></svg><span>Instagram</span></a><a href="https://api.whatsapp.com/send?phone=923238800909" target="_blank" rel="noopener" class="social-link"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-8.6 15.1L2 22l5-1.3A10 10 0 1012 2zm0 18.2a8.2 8.2 0 01-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1112 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 01-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 00-.7.3 3 3 0 00-.9 2.2 5.2 5.2 0 001.1 2.7 11.8 11.8 0 004.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.8-1.2.2-.6.2-1.1.1-1.2l-.5-.3z"/></svg><span>WhatsApp</span></a><a href="https://www.tiktok.com/@konocrisp" target="_blank" rel="noopener" class="social-link"><svg viewBox="0 0 24 24" fill="none"><path d="M14 4v9.5a2.5 2.5 0 11-2-2.45V9a4.5 4.5 0 104.5 4.5V9.2a5.4 5.4 0 003 1V8.1a3.4 3.4 0 01-2.2-1.3A3.6 3.6 0 0116.5 4H14z" fill="currentColor"/></svg><span>TikTok</span></a></div></div>
+        <div><h4 class="widget-title">Company information</h4><div class="footer-list">
+          <span class="footer-text">Kono Crisp</span>
+          <a href="https://www.google.com/maps/search/?api=1&query=Kono+Crisp+Model+Town+Link+Road+Lahore" target="_blank" rel="noopener" class="footer-link">Model Town Link Road, Lahore</a>
+          <a href="mailto:konocrisp@gmail.com" class="footer-link">konocrisp@gmail.com</a>
+          <a href="tel:+923238800909" class="footer-link">0323 8800909</a></div></div>
       </div>
-      <div class="footer-col">
-        <h4>Socials</h4>
-        <div class="socials">
-          <a href="https://www.facebook.com/konocrisp" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none"><path d="M14 21v-7h2.4l.4-3H14V9.2c0-.9.3-1.5 1.6-1.5H17V5.1C16.7 5 15.8 5 14.8 5c-2.1 0-3.6 1.3-3.6 3.7V11H9v3h2.2v7" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></a>
-          <a href="https://www.instagram.com/konocrisp/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.8"/><circle cx="17.4" cy="6.6" r="1.2" fill="currentColor"/></svg></a>
-          <a href="https://api.whatsapp.com/send?phone=923238800909" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-8.6 15.1L2 22l5-1.3A10 10 0 1012 2zm0 18.2a8.2 8.2 0 01-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1112 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 01-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 00-.7.3 3 3 0 00-.9 2.2 5.2 5.2 0 001.1 2.7 11.8 11.8 0 004.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.8-1.2.2-.6.2-1.1.1-1.2l-.5-.3z"/></svg></a>
-          <a href="https://www.tiktok.com/@konocrisp" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="none"><path d="M14 4v9.5a2.5 2.5 0 11-2-2.45V9a4.5 4.5 0 104.5 4.5V9.2a5.4 5.4 0 003 1V8.1a3.4 3.4 0 01-2.2-1.3A3.6 3.6 0 0116.5 4H14z" fill="currentColor"/></svg></a>
-        </div>
-      </div>
-      <div class="footer-links">
-        <a href="menu.html">View our full menu <svg viewBox="0 0 24 24" fill="none"><path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-        <a href="visit.html">Find our location <svg viewBox="0 0 24 24" fill="none"><path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-        <a href="about.html">Our story <svg viewBox="0 0 24 24" fill="none"><path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-        <a href="contact.html">Get in touch <svg viewBox="0 0 24 24" fill="none"><path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span>&copy; 2026 Kono Crisp. All rights reserved.</span>
-      <span>Fry Day, Every Day &middot; Lahore since 2023</span>
+      <a href="index.html" class="footer-logo" aria-label="Kono Crisp home"><img src="assets/logo/lockup-stacked-white.svg" alt="Kono Crisp" width="240" height="225" loading="lazy" style="width:min(100%,240px)"></a>
     </div>
   </div>
+  <div class="footer-bottom"><div class="container">
+    <span>&copy; 2026 Kono Crisp. All rights reserved.</span>
+    <span>Fry Day, Every Day &middot; Lahore since 2023</span>
+  </div></div>
 </footer>
-
+</div>
 
 <!-- ===== Cart bar, drawer & toast ===== -->
 <div class="cart-bar" id="cartBar">
@@ -294,7 +265,7 @@
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-<script src="assets/js/main.js?v=10"></script>
-<script src="assets/js/order.js?v=10"></script>
+<script src="assets/js/main.js?v=11"></script>
+<script src="assets/js/order.js?v=11"></script>
 </body>
 </html>
