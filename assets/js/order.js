@@ -819,6 +819,18 @@
 
     var no = orderNumber();
     var orderSnapshot = captureOrder(no);
+    try {
+      if(window.gtag) gtag('event', 'whatsapp_order', {
+        transaction_id: no,
+        value: total(),
+        currency: 'PKR',
+        order_type: orderType,
+        items: cart.map(function(l){
+          return { item_id: l.item, item_name: itemName(l.base, itemById(l.base, l.item)), price: unitPrice(l), quantity: l.qty };
+        })
+      });
+    } catch(e){ /* analytics must never block the order */ }
+
     var url = 'https://wa.me/' + CONFIG.whatsappNumber + '?text=' + encodeURIComponent(buildMessage(no));
 
     /* Hand off to WhatsApp via a real anchor click, not window.open(): many

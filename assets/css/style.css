@@ -4054,7 +4054,7 @@ a.footer-link:hover {
   color: var(--navy)
 }
 
-/* ===== Payment methods ===== */
+/* ===== Payment options ===== */
 .pay-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
