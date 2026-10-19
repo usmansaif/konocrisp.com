@@ -1296,11 +1296,16 @@ h4 {
   justify-content: space-between;
   align-items: center;
   gap: 16px;
-  border: 2px solid var(--ink);
-  border-radius: var(--r-sm);
+  /* border: 2px solid var(--ink); */
+  /* border-radius: var(--r-sm); */
   padding: 12px 20px;
   min-height: 68px;
-  transition: background .2s ease
+  transition: background .2s ease;
+
+  border: 1px solid #E3EBF6;
+  border-radius: 16px;
+  /* box-shadow: 0 10px 20px #0000001a; */
+  overflow: hidden;
 }
 
 .menu-row:hover {
@@ -2363,9 +2368,14 @@ h4 {
   background: #fff;
   color: var(--ink);
   border: 2px solid var(--ink);
-  border-radius: var(--r-md);
+  /* border-radius: var(--r-md); */
   padding: 22px;
-  box-shadow: 6px 6px 0 var(--ink)
+  /* box-shadow: 6px 6px 0 var(--ink); */
+
+  /* border: 2px solid #E3EBF6; */
+  border-radius: 16px;
+  box-shadow: 0 10px 20px #0000001a;
+  overflow: hidden;
 }
 
 .frozen-col h3 {
@@ -2398,6 +2408,49 @@ h4 {
   .opt--frozen .opt-box {
     min-height: 0
   }
+}
+
+/* ===== Frozen section: category tabs (index.html) ===== */
+.frozen-tabs {
+  display: flex;
+  width: fit-content;
+  margin: 32px auto 0;
+  align-items: center;
+  gap: 4px;
+  background: var(--slate-300);
+  border-radius: 999px;
+  padding: 5px;
+}
+
+.frozen-tab {
+  flex: 0 0 auto;
+  border: none;
+  background: transparent;
+  color: var(--slate-700);
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 11px 48px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: color .2s ease, background .2s ease;
+  white-space: nowrap;
+  letter-spacing: .01em;
+}
+
+.frozen-tab:hover:not(.frozen-tab--active) {
+  color: var(--navy);
+}
+
+.frozen-tab--active {
+  background: linear-gradient(135deg, var(--navy-950) 0%, var(--navy) 100%);
+  color: var(--gold);
+  box-shadow: 0 3px 10px rgba(28,67,102,.4);
+}
+
+/* Space between tab bar and the active panel */
+.frozen-tabs ~ .frozen-col {
+  margin-top: 24px;
 }
 
 
