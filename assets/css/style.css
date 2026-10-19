@@ -439,7 +439,7 @@ h1,h2,h3,h4{font-family:var(--ff-display);font-weight:700;line-height:1.15;lette
 .frozen-cta{display:flex;justify-content:center;margin-top:36px}
 
 @media (max-width:991px){.frozen-home-grid{grid-template-columns:1fr}}
-@media (max-width:479px){.opt-grid--frozen{grid-template-columns:1fr}.opt--frozen .opt-box{min-height:0}}
+@media (max-width:479px){.opt--frozen .opt-box{min-height:0}}
 
 
 /* ===== Reviews ===== */
