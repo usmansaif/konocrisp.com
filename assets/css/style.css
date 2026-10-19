@@ -450,7 +450,8 @@ h4 {
 .brand-stacked {
   height: clamp(80px, 7vw, 104px);
   width: auto;
-  transition: opacity .25s ease
+  transition: opacity .25s ease;
+  margin-top: 10px;
 }
 
 .brand-wordmark {
@@ -2699,7 +2700,7 @@ h4 {
   font-family: inherit;
   font-size: 24px;
   font-weight: 600;
-  padding: 11px 48px;
+  padding: 11px 80px;
   border-radius: 999px;
   cursor: pointer;
   transition: color .2s ease, background .2s ease;
