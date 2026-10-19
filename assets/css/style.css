@@ -442,6 +442,18 @@ h1,h2,h3,h4{font-family:var(--ff-display);font-weight:700;line-height:1.15;lette
 @media (max-width:479px){.opt-grid--frozen{grid-template-columns:1fr}.opt--frozen .opt-box{min-height:0}}
 
 
+/* ===== Reviews ===== */
+.review-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;margin-top:40px}
+.review-card{display:flex;flex-direction:column;gap:16px;background:#fff;color:var(--ink);border:2px solid var(--ink);border-radius:var(--r-md);padding:24px;box-shadow:6px 6px 0 var(--ink)}
+.review-tag{align-self:flex-start;background:var(--gold);border:2px solid var(--ink);border-radius:999px;padding:4px 12px;font-weight:800;font-size:12px;letter-spacing:.06em;text-transform:uppercase}
+.review-card blockquote{margin:0;flex:1;font-size:17px;line-height:1.55;color:var(--slate-700)}
+.review-card footer{display:flex;align-items:center;gap:12px}
+.review-avatar{flex:none;width:44px;height:44px;border-radius:50%;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;letter-spacing:.04em}
+.review-card strong{display:block;font-weight:800}
+.review-card small{display:block;color:var(--slate-500);font-weight:600;font-size:14px}
+@media (max-width:991px){.review-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:767px){.review-grid{grid-template-columns:1fr}}
+
 /* ===== SEO content block (frozen page) ===== */
 .seo-wrap{max-width:960px}
 .seo-fig{margin:32px 0}
