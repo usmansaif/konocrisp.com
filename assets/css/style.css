@@ -118,7 +118,7 @@ section {
 }
 
 .sec {
-  padding: clamp(72px, 9vw, 128px) 0
+  padding: clamp(72px, 9vw, 60px) 0
 }
 
 .sec--navy {
@@ -1299,8 +1299,8 @@ h4 {
   padding: 12px 20px;
   min-height: 68px;
   transition: background .25s ease, border-color .25s ease,
-              box-shadow .25s ease, transform .25s ease,
-              margin-right .25s ease, padding-right .25s ease;
+    box-shadow .25s ease, transform .25s ease,
+    margin-right .25s ease, padding-right .25s ease;
 
   border: 2px solid #92a4be;
   border-radius: 16px;
@@ -1378,7 +1378,7 @@ h4 {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  padding: 20px;
+  /* padding: 20px; */
   position: relative;
   transition: transform .25s ease
 }
@@ -2430,7 +2430,256 @@ h4 {
   }
 }
 
+/* ===== Sauces — Owl Carousel (index.html) ===== */
+
+/* Wrapper: give room for the side arrows */
+.sauce-owl-wrap {
+  position: relative;
+  margin-top: 40px;
+  padding: 0 56px;
+}
+
+/* Hide overflow on left and right, but give vertical headroom so hover lift isn't cut off */
+.sauce-owl .owl-stage-outer {
+  overflow: hidden !important;
+  padding-top: 14px;
+  margin-top: -14px;
+  padding-bottom: 14px;
+  margin-bottom: -14px;
+}
+
+/* Sauce Carousel Variables */
+:root {
+  --sauce-card-h: 240px;
+}
+
+/* Cards */
+.sauce-card {
+  position: relative;
+  background: var(--paper);
+  border: 2px solid var(--line);
+  border-radius: 20px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .08);
+  overflow: hidden;
+  display: block;
+  transition: transform .28s ease, box-shadow .28s ease, border-color .28s ease;
+  cursor: pointer;
+}
+
+.sauce-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(28, 67, 102, .2);
+  border-color: var(--gold);
+}
+
+.sauce-img {
+  width: 100%;
+  height: var(--sauce-card-h);
+  object-fit: cover;
+  display: block;
+  transition: transform .35s ease;
+}
+
+.sauce-card:hover .sauce-img {
+  transform: scale(1.06);
+}
+
+/* Sauce title overlay — appears on hover over the image */
+.sauce-name {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 36px 16px 16px;
+  background: linear-gradient(to top, rgba(11, 27, 43, 0.94) 0%, rgba(11, 27, 43, 0.6) 65%, transparent 100%);
+  font-family: var(--ff-display);
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--gold);
+  text-align: center;
+  letter-spacing: .02em;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity .28s ease, transform .28s ease;
+  pointer-events: none;
+}
+
+.sauce-card:hover .sauce-name {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Owl nav: float buttons to left / right sides (centered on card) ── */
+.sauce-owl .owl-nav {
+  position: absolute;
+  top: 18px;
+  left: 0;
+  right: 0;
+  height: var(--sauce-card-h);
+  pointer-events: none;   /* let clicks fall through to cards */
+  margin: 0;
+}
+
+.sauce-owl .owl-nav button.owl-prev,
+.sauce-owl .owl-nav button.owl-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: all;
+  /* restore clicks on the buttons themselves */
+  width: 44px;
+  height: 44px;
+  border-radius: 50% !important;
+  background: linear-gradient(135deg, var(--navy-950) 0%, var(--navy) 100%) !important;
+  color: var(--gold) !important;
+  font-size: 20px !important;
+  line-height: 1 !important;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(28, 67, 102, .35);
+  transition: transform .2s ease, box-shadow .2s ease;
+  margin: 0;
+}
+
+.sauce-owl .owl-nav button.owl-prev {
+  left: -52px;
+}
+
+.sauce-owl .owl-nav button.owl-next {
+  right: -52px;
+}
+
+.sauce-owl .owl-nav button.owl-prev:hover,
+.sauce-owl .owl-nav button.owl-next:hover {
+  transform: translateY(-50%) scale(1.12);
+  box-shadow: 0 8px 20px rgba(28, 67, 102, .45);
+  background: linear-gradient(135deg, var(--navy-950) 0%, var(--navy) 100%) !important;
+}
+
+/* Dots */
+.sauce-owl .owl-dots {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.sauce-owl .owl-dot span {
+  background: var(--slate-300) !important;
+  transition: background .2s ease, width .2s ease;
+}
+
+.sauce-owl .owl-dot.active span {
+  background: var(--gold) !important;
+  width: 24px;
+}
+
+/* ===== Sauce Slider Responsive Breakpoints ===== */
+@media (max-width: 991px) {
+  .sauce-owl-wrap {
+    padding: 0 48px;
+    margin-top: 32px;
+  }
+
+  .sauce-owl .owl-nav button.owl-prev {
+    left: -44px;
+    width: 40px;
+    height: 40px;
+    font-size: 18px !important;
+  }
+
+  .sauce-owl .owl-nav button.owl-next {
+    right: -44px;
+    width: 40px;
+    height: 40px;
+    font-size: 18px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --sauce-card-h: 220px;
+  }
+
+  .sauce-owl-wrap {
+    padding: 0 42px;
+  }
+
+  .sauce-name {
+    font-size: 17px;
+    padding: 28px 14px 14px;
+  }
+}
+
+@media (max-width: 575px), (hover: none) {
+  .sauce-name {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 575px) {
+  :root {
+    --sauce-card-h: 210px;
+  }
+
+  .sauce-owl-wrap {
+    padding: 0 36px;
+    margin-top: 24px;
+  }
+
+  .sauce-owl .owl-nav button.owl-prev {
+    left: -32px;
+    width: 32px;
+    height: 32px;
+    font-size: 14px !important;
+  }
+
+  .sauce-owl .owl-nav button.owl-next {
+    right: -32px;
+    width: 32px;
+    height: 32px;
+    font-size: 14px !important;
+  }
+
+  .sauce-name {
+    font-size: 16px;
+    padding: 26px 12px 12px;
+  }
+
+  .sauce-owl .owl-dots {
+    margin-top: 16px;
+  }
+}
+
+@media (max-width: 380px) {
+  :root {
+    --sauce-card-h: 200px;
+  }
+
+  .sauce-owl-wrap {
+    padding: 0 30px;
+  }
+
+  .sauce-owl .owl-nav button.owl-prev {
+    left: -26px;
+    width: 28px;
+    height: 28px;
+    font-size: 12px !important;
+  }
+
+  .sauce-owl .owl-nav button.owl-next {
+    right: -26px;
+    width: 28px;
+    height: 28px;
+    font-size: 12px !important;
+  }
+}
+
 /* ===== Frozen section: category tabs (index.html) ===== */
+
 .frozen-tabs {
   display: flex;
   width: fit-content;
@@ -2465,11 +2714,11 @@ h4 {
 .frozen-tab--active {
   background: linear-gradient(135deg, var(--navy-950) 0%, var(--navy) 100%);
   color: var(--gold);
-  box-shadow: 0 3px 10px rgba(28,67,102,.4);
+  box-shadow: 0 3px 10px rgba(28, 67, 102, .4);
 }
 
 /* Space between tab bar and the active panel */
-.frozen-tabs ~ .frozen-panel-split {
+.frozen-tabs~.frozen-panel-split {
   margin-top: 48px;
 }
 
@@ -2503,20 +2752,21 @@ h4 {
   height: 400px;
   object-fit: cover;
   border-radius: 14px;
-  box-shadow: 0 8px 24px rgba(0,0,0,.15);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .15);
   display: block;
   transition: transform .35s ease, box-shadow .35s ease;
 }
 
 .frozen-panel-img:hover {
   transform: scale(1.025);
-  box-shadow: 0 14px 36px rgba(0,0,0,.22);
+  box-shadow: 0 14px 36px rgba(0, 0, 0, .22);
 }
 
 @media (max-width: 767px) {
   .frozen-panel-split {
     grid-template-columns: 1fr;
   }
+
   .frozen-panel-img {
     height: 220px;
   }
