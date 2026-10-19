@@ -29,6 +29,14 @@
       cta: {label: 'Explore sauces', href: 'menu.html#sauces'}
     },
     {
+      image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=1800&q=80&auto=format&fit=crop',
+      alt: 'Golden samosas ready to fry at home',
+      badge: 'New<br>frozen',
+      heading: 'Frozen samosas<br>&amp; rolls',
+      text: 'Stock your freezer with 12-piece packs, from Rs. 300.',
+      cta: {label: 'Order frozen', href: 'frozen.html'}
+    },
+    {
       image: 'https://images.unsplash.com/photo-1583067837451-c3491dce56b6?w=1800&q=80&auto=format&fit=crop',
       alt: 'A basket piled with crispy golden samosas',
       badge: 'Open<br>daily',

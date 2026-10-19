@@ -5,7 +5,6 @@
 
   var CONFIG = {
     whatsappNumber: '923238800909',   // international format, no + or leading 0
-    deliveryFee: 100,                 // flat, delivery orders only
     maxSauces: 2,                     // sauces allowed per box
     fries: [
       {id:'regular', name:'Small Fries',   desc:'A proper solo portion', price:150},
@@ -18,6 +17,23 @@
       {id:'pizza',       name:'Pizza Samosa',           desc:'Cheesy pizza-style filling', price:90},
       {id:'bbq',         name:'BBQ Samosa',             desc:'Smoky BBQ chicken filling', price:90},
       {id:'qeema',       name:'Qeema Samosa',           desc:'Spiced minced meat filling', price:90}
+    ],
+    /* Frozen packs (order on frozen.html). Unlimited quantity, no sauces. */
+    frozen: [
+      {id:'fresh-fries',    cat:'fries',  name:'Fresh French Fries',         unit:'250g',  price:250},
+      {id:'malai-boti-sam', cat:'samosa', name:'Chicken Malai Boti Samosa',  unit:'12 pc', price:450},
+      {id:'tikka-sam',      cat:'samosa', name:'Chicken Tikka Samosa',       unit:'12 pc', price:450},
+      {id:'cheese-sam',     cat:'samosa', name:'Chicken Cheese Samosa',      unit:'12 pc', price:500},
+      {id:'veg-sam',        cat:'samosa', name:'Chicken Vegetable Samosa',   unit:'12 pc', price:450},
+      {id:'potato-sam',     cat:'samosa', name:'Potato Samosa',              unit:'12 pc', price:300},
+      {id:'tikka-roll',     cat:'roll',   name:'Chicken Tikka Roll',         unit:'12 pc', price:500},
+      {id:'cheese-roll',    cat:'roll',   name:'Chicken Cheese Roll',        unit:'12 pc', price:600},
+      {id:'veg-roll',       cat:'roll',   name:'Chicken Vegetable Roll',     unit:'12 pc', price:500}
+    ],
+    frozenTabs: [
+      {cat:'samosa', label:'Samosa'},
+      {cat:'roll',   label:'Roll'},
+      {cat:'fries',  label:'Fries'}
     ],
     sauces: [
       {name:'Tomato Ketchup', color:'#D8321F'},
@@ -39,7 +55,9 @@
   function $$(sel, root){ return Array.prototype.slice.call((root || document).querySelectorAll(sel)); }
   function money(n){ return 'Rs. ' + Number(n).toLocaleString('en-PK'); }
   function esc(s){ return String(s).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
-  function itemsForBase(base){ return base === 'samosa' ? CONFIG.samosas : CONFIG.fries; }
+  function itemsForBase(base){ return base === 'frozen' ? CONFIG.frozen : base === 'samosa' ? CONFIG.samosas : CONFIG.fries; }
+  function maxLineQty(line){ return line.base === 'frozen' ? 9999 : 20; }  // frozen packs: no practical limit
+  function itemName(base, item){ return item.name + (base === 'frozen' ? ' (' + item.unit + ')' : ''); }
   function itemById(base, id){ return itemsForBase(base).filter(function(x){ return x.id === id; })[0]; }
 
   function unitPrice(line){ return itemById(line.base, line.item).price; }  // sauces are free
@@ -112,13 +130,12 @@
       items: cart.map(function(l){
         var f = itemById(l.base, l.item);
         return {
-          name: f.name, qty: l.qty, unit: unitPrice(l),
+          name: itemName(l.base, f), qty: l.qty, unit: unitPrice(l),
           lineTotal: unitPrice(l) * l.qty,
           sauces: l.sauces.slice()
         };
       }),
       subtotal: subtotal(),
-      deliveryFee: deliveryFee(),
       total: total()
     };
   }
@@ -148,7 +165,7 @@
       var nameLines = fits ? [nameQty] : wrapText(mctx, nameQty, CW);
 
       mctx.font = '400 9.5px ' + MF;
-      var sauceLines = wrapText(mctx, 'Sauces: ' + it.sauces.join(', '), CW - 10);
+      var sauceLines = it.sauces.length ? wrapText(mctx, 'Sauces: ' + it.sauces.join(', '), CW - 10) : [];
 
       var h = 10 + nameLines.length * 15 + sauceLines.length * 13;
       return { it: it, nameLines: nameLines, fits: fits, priceStr: priceStr, sauceLines: sauceLines, h: h };
@@ -164,7 +181,7 @@
     var ORDER_ROW_GAP = 18, TYPE_ROW_GAP = 20;
     var ITEMS_LEAD = 6;
     var ITEMS_H = itemBlocks.reduce(function(s, b){ return s + b.h; }, 0);
-    var SUBTOTAL_GAP = 18, DELIVERY_GAP = 18, TOTAL_DIV_GAP = 14, TOTAL_ROW_GAP = 24;
+    var TOTAL_ROW_GAP = 28;
     var NOTES_H = notesLines.length ? (16 + notesLines.length * 13) : 0;
     var CUSTOMER_ROW_GAP = 18;
     var CUSTOMER_H = (2 + addressLines.length) * CUSTOMER_ROW_GAP;
@@ -174,7 +191,7 @@
       TOP + LOGO_H + ADDR_GAP + CONTACT_GAP +
       DIV_GAP + ORDER_ROW_GAP + TYPE_ROW_GAP +
       DIV_GAP + ITEMS_LEAD + ITEMS_H +
-      DIV_GAP + SUBTOTAL_GAP + DELIVERY_GAP + TOTAL_DIV_GAP + TOTAL_ROW_GAP +
+      DIV_GAP + TOTAL_ROW_GAP +
       (NOTES_H ? NOTES_H + DIV_GAP / 2 : 0) +
       DIV_GAP + CUSTOMER_H +
       THANKYOU_GAP + VISIT_GAP + BOTTOM_PAD
@@ -258,20 +275,6 @@
 
     /* ===== totals ===== */
     y += DIV_GAP;
-    dashedLine(ctx, PAD, y, W - PAD);
-
-    y += SUBTOTAL_GAP;
-    ctx.font = '400 11px ' + MF;
-    ctx.fillStyle = INV.ink;
-    ctx.textAlign = 'left'; ctx.fillText('Subtotal', PAD, y);
-    ctx.textAlign = 'right'; ctx.fillText(money(order.subtotal), W - PAD, y);
-
-    y += DELIVERY_GAP;
-    ctx.textAlign = 'left'; ctx.fillText('Delivery Fee', PAD, y);
-    ctx.textAlign = 'right';
-    ctx.fillText(order.orderType === 'Delivery' ? money(order.deliveryFee) : 'Free (takeaway)', W - PAD, y);
-
-    y += TOTAL_DIV_GAP;
     dashedLine(ctx, PAD, y, W - PAD);
 
     y += TOTAL_ROW_GAP;
@@ -361,8 +364,7 @@
   function lineKey(l){ return [l.base, l.item, l.sauces.slice().sort().join('|')].join('::'); }
   function cartCount(){ return cart.reduce(function(n, l){ return n + l.qty; }, 0); }
   function subtotal(){ return cart.reduce(function(n, l){ return n + unitPrice(l) * l.qty; }, 0); }
-  function deliveryFee(){ return orderType === 'Delivery' && cart.length ? CONFIG.deliveryFee : 0; }
-  function total(){ return subtotal() + deliveryFee(); }
+  function total(){ return subtotal(); }
 
   function saveCart(){ write(CART_KEY, cart); renderCart(); }
 
@@ -418,7 +420,75 @@
     grid.innerHTML = itemOptsHtml(selectedBase);
   }
 
+  /* ---------- Frozen packs builder (frozen.html): tabs, per-item quantity, no sauces ---------- */
+  var FROZEN_ICON = '<svg viewBox="0 0 24 24" fill="none"><path d="M12 3v18M4.2 7.5l15.6 9M19.8 7.5l-15.6 9" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M9.5 4.5L12 6.5l2.5-2M9.5 19.5L12 17.5l2.5 2" stroke="#F6C44F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  var frozenCat = CONFIG.frozenTabs[0].cat;
+  var frozenQty = {};
+
+  function clampFrozenQty(v){ v = parseInt(v, 10); return isNaN(v) ? 1 : Math.max(1, Math.min(9999, v)); }
+
+  function renderFrozenGrid(){
+    $('#frozenGrid').innerHTML = CONFIG.frozen.filter(function(it){ return it.cat === frozenCat; }).map(function(it){
+      var q = frozenQty[it.id] || 1;
+      return '<div class="opt opt--fries opt--frozen" data-frozen="' + it.id + '"><span class="opt-box">' + FROZEN_ICON +
+        '<span class="opt-name">' + esc(it.name) + '<small>' + esc(it.unit) + ' pack &middot; frozen</small></span>' +
+        '<span class="opt-foot"><b>' + money(it.price) + '</b>' +
+          '<span class="qty item-qty" aria-label="Quantity"><button type="button" data-fq="-1" aria-label="Fewer">&minus;</button>' +
+          '<input class="fq-in" type="number" inputmode="numeric" min="1" max="9999" value="' + q + '" aria-label="Quantity of ' + esc(it.name) + '">' +
+          '<button type="button" data-fq="1" aria-label="More">+</button></span></span>' +
+        '<button type="button" class="btn btn-blue frozen-add" data-fadd="' + it.id + '">Add to cart</button>' +
+      '</span></div>';
+    }).join('');
+  }
+
+  function renderFrozenBuilder(){
+    builder.innerHTML =
+      '<div class="b-step done" data-step="item"><div class="b-head"><span class="b-num">1</span><h3>Pick your frozen packs</h3><small>Order as many as you like</small></div>' +
+        '<div class="seg seg--3" id="frozenTabs" role="tablist" aria-label="Frozen category">' +
+          CONFIG.frozenTabs.map(function(t, i){
+            return '<button type="button" data-cat="' + t.cat + '"' + (i === 0 ? ' class="active" aria-pressed="true"' : ' aria-pressed="false"') + '>' + t.label + '</button>';
+          }).join('') +
+        '</div>' +
+        '<div class="opt-grid opt-grid--frozen" id="frozenGrid"></div></div>';
+    renderFrozenGrid();
+
+    $('#frozenTabs').addEventListener('click', function(e){
+      var b = e.target.closest('button[data-cat]');
+      if(!b) return;
+      frozenCat = b.dataset.cat;
+      $$('#frozenTabs button', builder).forEach(function(x){
+        x.classList.toggle('active', x === b);
+        x.setAttribute('aria-pressed', x === b ? 'true' : 'false');
+      });
+      renderFrozenGrid();
+    });
+
+    var grid = $('#frozenGrid');
+    function cardId(el){ return el.closest('[data-frozen]').dataset.frozen; }
+    grid.addEventListener('click', function(e){
+      var step = e.target.closest('[data-fq]');
+      var add = e.target.closest('[data-fadd]');
+      if(step){
+        var id = cardId(step), input = $('.fq-in', step.parentNode);
+        frozenQty[id] = clampFrozenQty(clampFrozenQty(input.value) + Number(step.dataset.fq));
+        input.value = frozenQty[id];
+      } else if(add){
+        var it = itemById('frozen', add.dataset.fadd);
+        var n = clampFrozenQty($('.fq-in', add.closest('[data-frozen]')).value);
+        addLine({base:'frozen', item:it.id, sauces:[], qty:n});
+        toast(n + ' \u00d7 ' + it.name + ' added to your cart');
+        frozenQty[it.id] = 1;
+        $('.fq-in', add.closest('[data-frozen]')).value = 1;
+      }
+    });
+    grid.addEventListener('change', function(e){
+      if(!e.target.classList.contains('fq-in')) return;
+      e.target.value = frozenQty[cardId(e.target)] = clampFrozenQty(e.target.value);
+    });
+  }
+
   function renderBuilder(){
+    if(builder.dataset.mode === 'frozen'){ renderFrozenBuilder(); return; }
     var sauceOpts = CONFIG.sauces.map(function(s){
       return '<label class="opt"><input type="checkbox" name="sauce" value="' + esc(s.name) + '">' +
         '<span class="opt-box"><span class="swatch" style="--c:' + s.color + '"></span>' + esc(s.name) + '<span class="opt-tick"></span></span></label>';
@@ -596,7 +666,7 @@
     /* navbar badge + floating bar */
     $$('.cart-count').forEach(function(b){ b.textContent = count; b.hidden = count === 0; });
     if(cartBar){
-      $('#cartBarCount').textContent = count + (count === 1 ? ' box' : ' boxes');
+      $('#cartBarCount').textContent = count + (count === 1 ? ' item' : ' items');
       $('#cartBarTotal').textContent = money(subtotal());
       cartBar.classList.toggle('show', count > 0 && !drawer.classList.contains('open'));
     }
@@ -605,7 +675,7 @@
     if(!list) return;
     if(!cart.length){
       list.innerHTML = '<div class="cart-empty"><svg viewBox="0 0 24 24" fill="none"><path d="M3 4h2l2.4 11.2a1 1 0 001 .8h9.2a1 1 0 001-.8L20 8H6.2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9" cy="20" r="1.4" fill="currentColor"/><circle cx="17" cy="20" r="1.4" fill="currentColor"/></svg>' +
-        '<strong>Your cart is empty</strong>Build your first box of fries to get started.<br><a href="' + (builder ? '#order' : 'order.html') + '" class="btn btn-blue" data-close-drawer>Build a box</a></div>';
+        '<strong>Your cart is empty</strong>Add something crispy to get started.<br><a href="' + (builder ? '#order' : 'order.html') + '" class="btn btn-blue" data-close-drawer>Start ordering</a></div>';
       $('#cartFoot').hidden = true;
     } else {
       list.innerHTML = cart.map(function(l, i){
@@ -613,7 +683,7 @@
         return '<div class="line">' +
           '<span class="line-no">' + (i + 1) + '</span>' +
           '<div><h4>' + esc(f.name) + '</h4><dl>' +
-            '<dt>Sauces: </dt><dd>' + esc(l.sauces.join(', '))+'</dd>' +
+            (l.base === 'frozen' ? '<dt>Pack: </dt><dd>' + esc(f.unit) + ' &middot; frozen</dd>' : '<dt>Sauces: </dt><dd>' + esc(l.sauces.join(', '))+'</dd>') +
             '<dt>Each: </dt><dd>' + money(unitPrice(l)) + '</dd>' +
           '</dl></div>' +
           '<div class="line-side"><span class="line-price">' + money(unitPrice(l) * l.qty) + '</span>' +
@@ -624,10 +694,7 @@
       $('#cartFoot').hidden = false;
     }
 
-    var totalsHtml =
-      '<div><span>Subtotal</span><span>' + money(subtotal()) + '</span></div>' +
-      '<div><span>Delivery charges</span>' + (orderType === 'Delivery' ? '<span>' + money(CONFIG.deliveryFee) + '</span>' : '<span class="free">Free (takeaway)</span>') + '</div>' +
-      '<div class="grand"><span>Total</span><span>' + money(total()) + '</span></div>';
+    var totalsHtml = '<div class="grand"><span>Total</span><span>' + money(total()) + '</span></div>';
     $$('.totals', drawer).forEach(function(t){ t.innerHTML = totalsHtml; });
   }
 
@@ -636,7 +703,7 @@
     if(!t) return;
     if(t.dataset.line !== undefined){
       var l = cart[Number(t.dataset.line)];
-      l.qty = Math.max(1, Math.min(20, l.qty + Number(t.dataset.d)));
+      l.qty = Math.max(1, Math.min(maxLineQty(l), l.qty + Number(t.dataset.d)));
       if(l.base === 'samosa'){
         var lineMax = l.qty >= 2 ? 2 : 1;
         if(l.sauces.length > lineMax){
@@ -722,13 +789,11 @@
     lines.push('*Items:*');
     cart.forEach(function(l, i){
       var f = itemById(l.base, l.item);
-      lines.push((i + 1) + '. *' + f.name + '* x' + l.qty + ' - ' + money(unitPrice(l) * l.qty));
-      lines.push('   Sauces: ' + l.sauces.join(', '));
+      lines.push((i + 1) + '. *' + itemName(l.base, f) + '* x' + l.qty + ' - ' + money(unitPrice(l) * l.qty));
+      if(l.sauces.length) lines.push('   Sauces: ' + l.sauces.join(', '));
       lines.push('   Price: ' + money(unitPrice(l)) + ' each');
     });
     lines.push('');
-    lines.push('Subtotal: ' + money(subtotal()));
-    lines.push('Delivery charges: ' + (orderType === 'Delivery' ? money(CONFIG.deliveryFee) : 'Rs. 0 (takeaway)'));
     lines.push('*Total: ' + money(total()) + '*');
     lines.push('');
     lines.push('*Customer details*');
