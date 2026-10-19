@@ -432,7 +432,7 @@
   function renderFrozenGrid(){
     $('#frozenGrid').innerHTML = CONFIG.frozen.filter(function(it){ return it.cat === frozenCat; }).map(function(it){
       var q = frozenQty[it.id] || 1;
-      return '<div class="opt opt--fries opt--frozen" data-frozen="' + it.id + '"><span class="opt-box">' + FROZEN_ICON +
+      return '<div class="opt opt--fries opt--samosa opt--frozen" data-frozen="' + it.id + '"><span class="opt-box">' + (it.cat === 'fries' ? FROZEN_ICON : SAMOSA_ICON) +
         '<span class="opt-name">' + esc(it.name) + '<small>' + esc(it.unit) + ' pack &middot; frozen</small></span>' +
         '<span class="opt-foot"><b>' + money(it.price) + '</b>' +
           '<span class="qty item-qty" aria-label="Quantity"><button type="button" data-fq="-1" aria-label="Fewer">&minus;</button>' +
