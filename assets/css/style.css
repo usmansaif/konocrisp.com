@@ -1296,11 +1296,11 @@ h4 {
   justify-content: space-between;
   align-items: center;
   gap: 16px;
-  /* border: 2px solid var(--ink); */
-  /* border-radius: var(--r-sm); */
   padding: 12px 20px;
   min-height: 68px;
-  transition: background .2s ease;
+  transition: background .25s ease, border-color .25s ease,
+              box-shadow .25s ease, transform .25s ease,
+              margin-right .25s ease, padding-right .25s ease;
 
   border: 2px solid #92a4be;
   border-radius: 16px;
@@ -1309,29 +1309,49 @@ h4 {
 }
 
 .menu-row:hover {
-  background: var(--gold-100)
+  background: linear-gradient(135deg, var(--navy-950) 0%, var(--navy) 100%);
+  border-color: var(--navy);
+  box-shadow: 0 16px 32px rgba(28, 67, 102, .35);
+  transform: translateY(-2px);
+  margin-right: -44px;
+  padding-right: 44px;
+}
+
+.menu-row:hover .menu-row-name {
+  color: #ffffff;
+}
+
+.menu-row:hover .menu-row-desc {
+  color: rgba(255, 255, 255, .65);
+}
+
+.menu-row:hover .menu-row-price {
+  color: var(--gold);
 }
 
 .menu-row-name {
   display: block;
   font-weight: 800;
   font-size: 18px;
-  line-height: 1.25
+  line-height: 1.25;
+  transition: color .25s ease;
 }
 
 .menu-row-desc {
   display: block;
   font-size: 14px;
   color: var(--slate-500);
-  font-weight: 600
+  font-weight: 600;
+  transition: color .25s ease;
 }
 
 .menu-row-price {
   font-family: var(--ff-display);
-  font-size: 22px;
+  font-size: 28px;
   letter-spacing: .03em;
   white-space: nowrap;
-  color: var(--navy)
+  color: var(--navy);
+  transition: color .25s ease;
 }
 
 .menu-panel-note {
@@ -2463,7 +2483,7 @@ h4 {
 .frozen-panel-split {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 28px;
+  gap: 100px;
   /* align-items: center; */
 }
 
