@@ -2945,14 +2945,20 @@ h4 {
 }
 
 .seo-lists li {
+  font-weight: 800;
+  border: 2px solid var(--ink);
+  border-radius: var(--r-sm)
+}
+
+.seo-lists li>a,
+.seo-lists li>span:only-child {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 12px;
-  font-weight: 800;
-  border: 2px solid var(--ink);
-  border-radius: var(--r-sm);
-  padding: 12px 14px
+  padding: 12px 14px;
+  color: inherit;
+  text-decoration: none
 }
 
 .seo-lists li:hover {
