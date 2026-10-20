@@ -20,8 +20,6 @@
     ],
     /* Frozen packs (order on frozen.html). Unlimited quantity, no sauces. */
     frozen: [
-      {id:'fresh-fries',    slug:'french-fries-250g', cat:'fries',  name:'Fresh French Fries',         unit:'250g',  price:250},
-      {id:'fresh-fries-500', slug:'french-fries-500g', cat:'fries', name:'Fresh French Fries',         unit:'500g',  price:500},
       {id:'fresh-fries-1000', slug:'french-fries-1000g', cat:'fries', name:'Fresh French Fries',        unit:'1000g', price:1000},
       {id:'malai-boti-sam', slug:'chicken-malai-boti-samosa', cat:'samosa', name:'Chicken Malai Boti Samosa',  unit:'12 pc', price:450},
       {id:'tikka-sam',      slug:'chicken-tikka-samosa', cat:'samosa', name:'Chicken Tikka Samosa',       unit:'12 pc', price:450},
