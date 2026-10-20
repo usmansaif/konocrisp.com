@@ -1388,6 +1388,10 @@ h4 {
   transform: translateY(-4px)
 }
 
+.sauce-grid .sauce-card {
+  padding: 20px
+}
+
 .sauce-top {
   display: flex;
   align-items: center;
@@ -2455,7 +2459,7 @@ h4 {
 }
 
 /* Cards */
-.sauce-card {
+.sauce-owl .sauce-card {
   position: relative;
   background: var(--paper);
   border: 2px solid var(--line);
@@ -2467,13 +2471,13 @@ h4 {
   cursor: pointer;
 }
 
-.sauce-card:hover {
+.sauce-owl .sauce-card:hover {
   transform: translateY(-6px);
   box-shadow: 0 18px 40px rgba(28, 67, 102, .2);
   border-color: var(--gold);
 }
 
-.sauce-img {
+.sauce-owl .sauce-img {
   width: 100%;
   height: var(--sauce-card-h);
   object-fit: cover;
@@ -2481,12 +2485,12 @@ h4 {
   transition: transform .35s ease;
 }
 
-.sauce-card:hover .sauce-img {
+.sauce-owl .sauce-card:hover .sauce-img {
   transform: scale(1.06);
 }
 
 /* Sauce title overlay — appears on hover over the image */
-.sauce-name {
+.sauce-owl .sauce-name {
   position: absolute;
   left: 0;
   right: 0;
@@ -2506,7 +2510,7 @@ h4 {
   pointer-events: none;
 }
 
-.sauce-card:hover .sauce-name {
+.sauce-owl .sauce-card:hover .sauce-name {
   opacity: 1;
   transform: translateY(0);
 }
@@ -2608,14 +2612,14 @@ h4 {
     padding: 0 42px;
   }
 
-  .sauce-name {
+  .sauce-owl .sauce-name {
     font-size: 17px;
     padding: 28px 14px 14px;
   }
 }
 
 @media (max-width: 575px), (hover: none) {
-  .sauce-name {
+  .sauce-owl .sauce-name {
     opacity: 1;
     transform: translateY(0);
   }
@@ -2645,7 +2649,7 @@ h4 {
     font-size: 14px !important;
   }
 
-  .sauce-name {
+  .sauce-owl .sauce-name {
     font-size: 16px;
     padding: 26px 12px 12px;
   }
