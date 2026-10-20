@@ -1312,10 +1312,7 @@ h4 {
 .menu-row:hover {
   background: linear-gradient(135deg, var(--navy-950) 0%, var(--navy) 100%);
   border-color: var(--navy);
-  box-shadow: 0 16px 32px rgba(28, 67, 102, .35);
-  transform: translateY(-2px);
-  margin-right: -44px;
-  padding-right: 44px;
+  box-shadow: 0 8px 18px rgba(28, 67, 102, .25);
 }
 
 .menu-row:hover .menu-row-name {
