@@ -4383,3 +4383,11 @@ a.footer-link:hover {
     grid-template-columns: 1fr
   }
 }
+
+/* Samosa cursor */
+html, body {
+  cursor: url("../images/cursor-samosa.png") 3 3, auto;
+}
+a, button, label, select, summary, [role="button"], input[type="submit"], input[type="button"] {
+  cursor: url("../images/cursor-samosa.png") 3 3, pointer;
+}
