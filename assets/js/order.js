@@ -20,17 +20,17 @@
     ],
     /* Frozen packs (order on frozen.html). Unlimited quantity, no sauces. */
     frozen: [
-      {id:'fresh-fries',    cat:'fries',  name:'Fresh French Fries',         unit:'250g',  price:250},
-      {id:'fresh-fries-500', cat:'fries', name:'Fresh French Fries',         unit:'500g',  price:500},
-      {id:'fresh-fries-1000', cat:'fries', name:'Fresh French Fries',        unit:'1000g', price:1000},
-      {id:'malai-boti-sam', cat:'samosa', name:'Chicken Malai Boti Samosa',  unit:'12 pc', price:450},
-      {id:'tikka-sam',      cat:'samosa', name:'Chicken Tikka Samosa',       unit:'12 pc', price:450},
-      {id:'cheese-sam',     cat:'samosa', name:'Chicken Cheese Samosa',      unit:'12 pc', price:500},
-      {id:'veg-sam',        cat:'samosa', name:'Chicken Vegetable Samosa',   unit:'12 pc', price:450},
-      {id:'potato-sam',     cat:'samosa', name:'Potato Samosa',              unit:'12 pc', price:300},
-      {id:'tikka-roll',     cat:'roll',   name:'Chicken Tikka Roll',         unit:'12 pc', price:500},
-      {id:'cheese-roll',    cat:'roll',   name:'Chicken Cheese Roll',        unit:'12 pc', price:600},
-      {id:'veg-roll',       cat:'roll',   name:'Chicken Vegetable Roll',     unit:'12 pc', price:500}
+      {id:'fresh-fries',    slug:'french-fries-250g', cat:'fries',  name:'Fresh French Fries',         unit:'250g',  price:250},
+      {id:'fresh-fries-500', slug:'french-fries-500g', cat:'fries', name:'Fresh French Fries',         unit:'500g',  price:500},
+      {id:'fresh-fries-1000', slug:'french-fries-1000g', cat:'fries', name:'Fresh French Fries',        unit:'1000g', price:1000},
+      {id:'malai-boti-sam', slug:'chicken-malai-boti-samosa', cat:'samosa', name:'Chicken Malai Boti Samosa',  unit:'12 pc', price:450},
+      {id:'tikka-sam',      slug:'chicken-tikka-samosa', cat:'samosa', name:'Chicken Tikka Samosa',       unit:'12 pc', price:450},
+      {id:'cheese-sam',     slug:'chicken-cheese-samosa', cat:'samosa', name:'Chicken Cheese Samosa',      unit:'12 pc', price:500},
+      {id:'veg-sam',        slug:'chicken-vegetable-samosa', cat:'samosa', name:'Chicken Vegetable Samosa',   unit:'12 pc', price:450},
+      {id:'potato-sam',     slug:'potato-samosa', cat:'samosa', name:'Potato Samosa',              unit:'12 pc', price:300},
+      {id:'tikka-roll',     slug:'chicken-tikka-roll', cat:'roll',   name:'Chicken Tikka Roll',         unit:'12 pc', price:500},
+      {id:'cheese-roll',    slug:'chicken-cheese-roll', cat:'roll',   name:'Chicken Cheese Roll',        unit:'12 pc', price:600},
+      {id:'veg-roll',       slug:'chicken-vegetable-roll', cat:'roll',   name:'Chicken Vegetable Roll',     unit:'12 pc', price:500}
     ],
     frozenTabs: [
       {cat:'samosa', label:'Samosa'},
@@ -433,7 +433,7 @@
     $('#frozenGrid').innerHTML = CONFIG.frozen.filter(function(it){ return it.cat === frozenCat; }).map(function(it){
       var q = frozenQty[it.id] || 1;
       return '<div class="opt opt--fries opt--samosa opt--frozen" data-frozen="' + it.id + '"><span class="opt-box">' + (it.cat === 'fries' ? FROZEN_ICON : SAMOSA_ICON) +
-        '<span class="opt-name">' + esc(it.name) + '<small>' + esc(it.unit) + ' pack &middot; frozen</small></span>' +
+        '<span class="opt-name"><a class="opt-link" href="frozen-foods/' + it.slug + '.html" title="View ' + esc(it.name) + ' (' + esc(it.unit) + ') details">' + esc(it.name) + '</a><small>' + esc(it.unit) + ' pack &middot; frozen</small></span>' +
         '<span class="opt-foot"><b>' + money(it.price) + '</b>' +
           '<span class="qty item-qty" aria-label="Quantity"><button type="button" data-fq="-1" aria-label="Fewer">&minus;</button>' +
           '<input class="fq-in" type="number" inputmode="numeric" min="1" max="9999" value="' + q + '" aria-label="Quantity of ' + esc(it.name) + '">' +

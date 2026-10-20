@@ -4162,3 +4162,181 @@ a.footer-link:hover {
     padding: 22px
   }
 }
+/* ===== Frozen item pages (frozen-foods/*.html) ===== */
+.opt-link {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: var(--gold);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px
+}
+
+.opt-link:hover,
+.opt-link:focus-visible {
+  color: var(--navy);
+  text-decoration-color: var(--navy)
+}
+
+.pdp {
+  padding-top: clamp(96px, 12vw, 140px)
+}
+
+.crumbs ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  list-style: none;
+  margin: 0 0 24px;
+  padding: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--slate-500)
+}
+
+.crumbs li+li::before {
+  content: "/";
+  margin-right: 6px
+}
+
+.crumbs a {
+  color: var(--navy);
+  text-decoration: underline;
+  text-underline-offset: 3px
+}
+
+.pdp-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(24px, 4vw, 56px);
+  align-items: center
+}
+
+.pdp-fig {
+  margin: 0
+}
+
+.pdp-fig img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--r-md);
+  border: 2px solid var(--ink);
+  box-shadow: 6px 6px 0 var(--ink)
+}
+
+.pdp-info h1 {
+  font-size: clamp(30px, 4vw, 48px);
+  line-height: 1.1;
+  color: var(--navy);
+  margin: 10px 0 14px
+}
+
+.pdp-unit {
+  white-space: nowrap
+}
+
+.pdp-lead {
+  font-size: clamp(17px, 1.6vw, 20px);
+  line-height: 1.5;
+  color: var(--slate-700)
+}
+
+.pdp-price {
+  margin: 18px 0
+}
+
+.pdp-price strong {
+  font-family: var(--ff-display);
+  font-weight: 400;
+  font-size: 36px;
+  letter-spacing: .03em;
+  color: var(--navy)
+}
+
+.pdp-price small {
+  color: var(--slate-500);
+  font-weight: 600;
+  margin-left: 6px
+}
+
+.pdp-facts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  list-style: none;
+  margin: 0 0 22px;
+  padding: 0
+}
+
+.pdp-facts li {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  border: 2px solid var(--ink);
+  border-radius: var(--r-sm);
+  padding: 10px 14px;
+  background: #fff
+}
+
+.pdp-facts span {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--slate-500)
+}
+
+.pdp-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px
+}
+
+.pdp-note {
+  margin-top: 14px;
+  font-size: 14px;
+  color: var(--slate-500)
+}
+
+.pdp-copy {
+  max-width: 860px
+}
+
+.pdp-copy>p {
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--slate-700);
+  margin-bottom: 14px
+}
+
+.pdp-related>div {
+  grid-column: 1 / -1
+}
+
+.pdp-related ul {
+  grid-template-columns: repeat(2, minmax(0, 1fr))
+}
+
+.pdp-related li {
+  padding: 0
+}
+
+.pdp-related li a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 12px 14px;
+  color: inherit
+}
+
+@media (max-width:767px) {
+  .pdp-grid {
+    grid-template-columns: 1fr
+  }
+
+  .pdp-related ul {
+    grid-template-columns: 1fr
+  }
+}
