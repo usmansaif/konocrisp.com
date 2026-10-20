@@ -2763,13 +2763,49 @@ h4 {
   box-shadow: 0 14px 36px rgba(0, 0, 0, .22);
 }
 
+@media (max-width: 1199px) {
+  .frozen-tab {
+    font-size: 20px;
+    padding: 10px 44px;
+  }
+
+  .frozen-panel-split {
+    gap: 48px;
+  }
+}
+
 @media (max-width: 767px) {
+  .frozen-tabs {
+    width: 100%;
+    max-width: 480px;
+    margin-top: 24px;
+  }
+
+  .frozen-tab {
+    flex: 1 1 0;
+    min-width: 0;
+    font-size: 16px;
+    padding: 10px 8px;
+  }
+
+  .frozen-tabs~.frozen-panel-split {
+    margin-top: 28px;
+  }
+
   .frozen-panel-split {
     grid-template-columns: 1fr;
+    gap: 24px;
   }
 
   .frozen-panel-img {
     height: 220px;
+  }
+}
+
+@media (max-width: 380px) {
+  .frozen-tab {
+    font-size: 14px;
+    padding: 9px 4px;
   }
 }
 
