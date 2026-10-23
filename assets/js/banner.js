@@ -1,7 +1,19 @@
 /* Hero banner slider.
-   Edit BANNER_SLIDES to change the content; each slide needs an image, heading, text and a CTA. */
+   Edit BANNER_SLIDES to change the content; each slide needs an image, heading, text and a CTA.
+   Edit BANNER_VIDEO_SRC to point to your hero video file. */
 (function(){
   "use strict";
+
+  /* ── Video slide config ── */
+  var BANNER_VIDEO_SRC  = 'assets/images/advertisement/frozen/mixed-products/videos/541454093_1792677511442907.mp4';
+  var BANNER_VIDEO_POSTER = 'https://images.unsplash.com/photo-1688978181542-87a886a16fbe?w=1800&q=80&auto=format&fit=crop';
+  var BANNER_VIDEO_SLIDE = {
+    type:    'video',
+    badge:   'Kono<br>Crisp',
+    heading: 'Fry Day,<br>Every Day',
+    text:    'Freshly fried and served hot at Model Town, Lahore.',
+    cta:     {label: 'Order now', href: 'order.html'}
+  };
 
   var BANNER_SLIDES = [
     {
@@ -56,14 +68,52 @@
 
   /* ----- Build markup ----- */
   var viewport = el('div', 'banner-viewport');
-  var slideEls = BANNER_SLIDES.map(function(s, i){
+  var heroVideo = null;     /* reference to the <video> element */
+  var slideEls  = [];
+  var totalSlides = 1 + BANNER_SLIDES.length; /* video + image slides */
+
+  /* -- Video slide (index 0) -- */
+  (function(){
+    var slide = el('div', 'banner-slide banner-slide--video');
+    slide.setAttribute('role', 'group');
+    slide.setAttribute('aria-roledescription', 'slide');
+    slide.setAttribute('aria-label', '1 of ' + totalSlides);
+
+    var vid = document.createElement('video');
+    vid.className      = 'banner-video';
+    vid.src            = BANNER_VIDEO_SRC;
+    vid.poster         = BANNER_VIDEO_POSTER;
+    vid.muted          = true;
+    vid.loop           = true;
+    vid.playsInline    = true;
+    vid.preload        = 'auto';
+    vid.setAttribute('aria-hidden', 'true');
+    heroVideo = vid;
+
+    var vs = BANNER_VIDEO_SLIDE;
+    slide.appendChild(vid);
+    var content = document.createElement('div');
+    content.className = 'container banner-content';
+    content.innerHTML =
+      '<div class="banner-badge" aria-hidden="true"><span>' + vs.badge + '</span></div>' +
+      '<h2 class="banner-title">' + vs.heading + '</h2>' +
+      '<p class="banner-text">' + vs.text + '</p>' +
+      '<a class="btn btn-white" href="' + vs.cta.href + '">' + vs.cta.label + '</a>';
+    slide.appendChild(content);
+    viewport.appendChild(slide);
+    slideEls.push(slide);
+  })();
+
+  /* -- Image slides (index 1…n) -- */
+  BANNER_SLIDES.forEach(function(s, i){
+    var globalIdx = i + 1;
     var slide = el('div', 'banner-slide');
     slide.setAttribute('role', 'group');
     slide.setAttribute('aria-roledescription', 'slide');
-    slide.setAttribute('aria-label', (i + 1) + ' of ' + BANNER_SLIDES.length);
+    slide.setAttribute('aria-label', (globalIdx + 1) + ' of ' + totalSlides);
     slide.innerHTML =
       '<img class="banner-img" src="' + s.image + '" alt="' + s.alt + '"' +
-        (i === 0 ? ' fetchpriority="high"' : ' loading="lazy"') + ' decoding="async">' +
+        (globalIdx === 0 ? ' fetchpriority="high"' : ' loading="lazy"') + ' decoding="async">' +
       '<div class="container banner-content">' +
         '<div class="banner-badge" aria-hidden="true"><span>' + s.badge + '</span></div>' +
         '<h2 class="banner-title">' + s.heading + '</h2>' +
@@ -71,13 +121,13 @@
         '<a class="btn btn-white" href="' + s.cta.href + '">' + s.cta.label + '</a>' +
       '</div>';
     viewport.appendChild(slide);
-    return slide;
+    slideEls.push(slide);
   });
 
   var prev = arrow('prev', 'Previous slide', 'M14.5 5.5L8 12l6.5 6.5');
   var next = arrow('next', 'Next slide', 'M9.5 5.5L16 12l-6.5 6.5');
   var dotsWrap = el('div', 'banner-dots');
-  var dots = BANNER_SLIDES.map(function(_, i){
+  var dots = slideEls.map(function(_, i){
     var d = el('button', 'banner-dot');
     d.type = 'button';
     d.setAttribute('aria-label', 'Go to slide ' + (i + 1));
@@ -126,6 +176,14 @@
       d.classList.toggle('is-active', n === current);
       if(n === current) d.setAttribute('aria-current', 'true'); else d.removeAttribute('aria-current');
     });
+    /* Video play / pause */
+    if(heroVideo){
+      if(current === 0){
+        heroVideo.play().catch(function(){});
+      } else {
+        heroVideo.pause();
+      }
+    }
     if(user) restart();
   }
 
