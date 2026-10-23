@@ -529,7 +529,7 @@ h4 {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: calc(var(--header-h) + 16px) clamp(24px, 6vw, 96px) 40px;
+  padding: calc(var(--header-h) + 24px) 0 40px;
   clip-path: inset(0 0 100% 0);
   visibility: hidden;
   transition: clip-path .55s cubic-bezier(.7, 0, .2, 1), visibility 0s linear .55s;
@@ -542,22 +542,33 @@ h4 {
   transition: clip-path .55s cubic-bezier(.7, 0, .2, 1)
 }
 
+.mobile-menu-links,
+.mobile-menu-foot {
+  width: 100%;
+  max-width: 1280px;
+  margin-inline: auto;
+  padding-inline: clamp(16px, 3.4vw, 48px);
+}
+
 .mobile-menu-links {
   display: flex;
   flex-direction: column;
-  gap: clamp(6px, 1.4vh, 14px)
+  gap: clamp(14px, 2.2vh, 22px);
 }
 
 .mobile-menu-links a {
   font-family: var(--ff-display);
-  font-size: clamp(34px, min(8vw, 9.5vh), 84px);
-  line-height: 1.08;
-  letter-spacing: .03em;
+  font-size: clamp(18px, 2.2vw, 28px);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: .04em;
   text-transform: uppercase;
   color: #fff;
   transition: color .2s ease, transform .25s ease;
-  width: max-content;
-  max-width: 100%
+  width: fit-content;
+  max-width: 100%;
+  display: inline-flex;
+  align-items: center;
 }
 
 .mobile-menu-links a:hover,
@@ -566,7 +577,7 @@ h4 {
 }
 
 .mobile-menu-links a:hover {
-  transform: translateX(10px)
+  transform: translateX(8px)
 }
 
 .mobile-menu-foot {
@@ -2432,7 +2443,7 @@ h4 {
   }
 }
 
-/* ===== Sauces — Owl Carousel (index.html) ===== */
+/* ===== Sauces — Owl Carousel (index.html) ===== */                               
 
 /* Wrapper: give room for the side arrows */
 .sauce-owl-wrap {
@@ -2519,7 +2530,8 @@ h4 {
   left: 0;
   right: 0;
   height: var(--sauce-card-h);
-  pointer-events: none;   /* let clicks fall through to cards */
+  pointer-events: none;
+  /* let clicks fall through to cards */
   margin: 0;
 }
 
@@ -2615,7 +2627,8 @@ h4 {
   }
 }
 
-@media (max-width: 575px), (hover: none) {
+@media (max-width: 575px),
+(hover: none) {
   .sauce-owl .sauce-name {
     opacity: 1;
     transform: translateY(0);
@@ -4052,8 +4065,12 @@ a.footer-link:hover {
     font-size: 62px
   }
 
+  .mobile-menu-links {
+    gap: 14px;
+  }
+
   .mobile-menu-links a {
-    font-size: clamp(36px, 12vw, 52px)
+    font-size: clamp(16px, 4.5vw, 20px);
   }
 }
 
@@ -4205,6 +4222,7 @@ a.footer-link:hover {
     padding: 22px
   }
 }
+
 /* ===== Frozen item pages (frozen-foods/*.html) ===== */
 .opt-link {
   color: inherit;
@@ -4385,9 +4403,18 @@ a.footer-link:hover {
 }
 
 /* Samosa cursor */
-html, body {
+html,
+body {
   cursor: url("../images/cursor-samosa.png") 3 3, auto;
 }
-a, button, label, select, summary, [role="button"], input[type="submit"], input[type="button"] {
+
+a,
+button,
+label,
+select,
+summary,
+[role="button"],
+input[type="submit"],
+input[type="button"] {
   cursor: url("../images/cursor-samosa.png") 3 3, pointer;
 }
