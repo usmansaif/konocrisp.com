@@ -1,63 +1,72 @@
 /* Hero banner slider.
-   Edit BANNER_SLIDES to change the content; each slide needs an image, heading, text and a CTA.
-   Edit BANNER_VIDEO_SRC to point to your hero video file. */
+   BANNER_SLIDES defines all slides in order.
+   Each slide can be either a VIDEO slide or an IMAGE slide:
+     - For video: { type: 'video', video: 'path/to/video.mp4', poster: 'path/to/poster.jpg', badge, heading, text, cta }
+     - For image: { type: 'image', image: 'path/to/photo.jpg', alt: '...', badge, heading, text, cta }
+   You can add as many video or image slides as you like.
+*/
 (function(){
   "use strict";
 
-  /* ── Video slide config ── */
-  var BANNER_VIDEO_SRC  = 'assets/images/advertisement/frozen/mixed-products/videos/541454093_1792677511442907.mp4';
-  var BANNER_VIDEO_POSTER = 'https://images.unsplash.com/photo-1688978181542-87a886a16fbe?w=1800&q=80&auto=format&fit=crop';
-  var BANNER_VIDEO_SLIDE = {
-    type:    'video',
-    badge:   'Kono<br>Crisp',
-    heading: 'Fry Day,<br>Every Day',
-    text:    'Freshly fried and served hot at Model Town, Lahore.',
-    cta:     {label: 'Order now', href: 'order.html'}
-  };
-
+  /* ── Slides configuration ── */
   var BANNER_SLIDES = [
+    /* Slide 1: Hero Video */
     {
-      image: 'https://images.unsplash.com/photo-1688978181542-87a886a16fbe?w=1800&q=80&auto=format&fit=crop',
-      alt: 'A generous pile of freshly fried, golden crispy fries',
-      badge: 'Lahore<br>since 2023',
-      heading: 'The crispiest<br>fries in Lahore',
-      text: 'Fried fresh to order and served with bold dips.',
-      cta: {label: 'Order now', href: 'order.html'}
+      type:    'video',
+      video:   'assets/images/advertisement/frozen/mixed-products/videos/Frozen_samosas_floating_in_studio_20261024201822.mp4',
+      poster:  'https://images.unsplash.com/photo-1688978181542-87a886a16fbe?w=1800&q=80&auto=format&fit=crop',
+      badge:   'Kono<br>Crisp',
+      heading: 'Fry Day,<br>Every Day',
+      text:    'Freshly fried and served hot at Model Town, Lahore.',
+      cta:     {label: 'Order now', href: 'order.html'}
     },
+
+    /* Slide 2: Video - Frozen Samosas */
     {
-      image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=1800&q=80&auto=format&fit=crop',
-      alt: 'Golden fried samosas served with chutney and green chilli',
-      badge: 'From<br>Rs. 80',
-      heading: 'Golden samosas,<br>five flavours',
-      text: 'Malai boti, BBQ, pizza and more, crisp outside and generous inside.',
-      cta: {label: 'See the menu', href: 'menu.html'}
+      type:    'video',
+      video:   'assets/images/advertisement/frozen/mixed-products/videos/541454093_1792680718811898.mp4',
+      poster:  'assets/photos/samosa-tray-1536.avif',
+      badge:   'New<br>Frozen',
+      heading: 'Golden Samosas,<br>Ready at Home',
+      text:    'Stock your freezer with handcrafted 12-piece packs, ready to fry in minutes.',
+      cta:     {label: 'Order frozen', href: 'frozen.html'}
     },
+
+    /* Slide 3: Video - Crispy Fries */
     {
-      image: 'https://images.unsplash.com/photo-1576107232684-1279f390859f?w=1800&q=80&auto=format&fit=crop',
-      alt: 'A wooden tray piled high with golden fries',
-      badge: '11<br>sauces',
-      heading: 'Dip into<br>something bold',
-      text: 'Six sauces, always free with your box.',
-      cta: {label: 'Explore sauces', href: 'menu.html#sauces'}
+      type:    'video',
+      video:   'assets/images/advertisement/frozen/mixed-products/videos/Commercial_for_KONO_CRISP_frozen…_20261024202759.mp4',
+      poster:  'assets/photos/hero-fries-1536.avif',
+      badge:   'Double<br>Crunch',
+      heading: 'The Crispiest<br>Fries in Lahore',
+      text:    'Double-fried fresh to order and paired with signature dips.',
+      cta:     {label: 'See the menu', href: 'menu.html'}
     },
+
+    /* Slide 4: Video - Mixed Specials & Dips */
     {
-      image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=1800&q=80&auto=format&fit=crop',
-      alt: 'Golden samosas ready to fry at home',
-      badge: 'New<br>frozen',
-      heading: 'Frozen samosas<br>&amp; rolls',
-      text: 'Stock your freezer with 12-piece packs, from Rs. 300.',
-      cta: {label: 'Order frozen', href: 'frozen.html'}
+      type:    'video',
+      video:   'assets/images/advertisement/frozen/mixed-products/videos/KONO_CRISP_frozen_samosas_floating_20261024201707.mp4',
+      poster:  'assets/photos/dips-tray-1536.avif',
+      badge:   '11<br>Sauces',
+      heading: 'Dip Into<br>Something Bold',
+      text:    'Six signature sauces, always complimentary with your box.',
+      cta:     {label: 'Explore sauces', href: 'menu.html#sauces'}
     },
+
+    /* Slide 5: Image - Visit & Takeaway */
     {
-      image: 'https://images.unsplash.com/photo-1583067837451-c3491dce56b6?w=1800&q=80&auto=format&fit=crop',
-      alt: 'A basket piled with crispy golden samosas',
-      badge: 'Open<br>daily',
-      heading: 'Find us on<br>Model Town Link Road',
-      text: 'Takeaway and delivery, every day from 12 PM to 12 AM.',
-      cta: {label: 'Get directions', href: 'visit.html'}
+      type:    'image',
+      image:   'https://images.unsplash.com/photo-1583067837451-c3491dce56b6?w=1800&q=80&auto=format&fit=crop',
+      alt:     'Crispy golden samosas served fresh',
+      badge:   'Open<br>daily',
+      heading: 'Find Us on<br>Model Town Link Road',
+      text:    'Takeaway and delivery, every day from 12 PM to 12 AM.',
+      cta:     {label: 'Get directions', href: 'visit.html'}
     }
   ];
-  var AUTOPLAY_MS = 5000;
+
+  var AUTOPLAY_MS = 6000;
   var SWIPE_PX = 40;
 
   var root = document.getElementById('heroBanner');
@@ -68,58 +77,56 @@
 
   /* ----- Build markup ----- */
   var viewport = el('div', 'banner-viewport');
-  var heroVideo = null;     /* reference to the <video> element */
   var slideEls  = [];
-  var totalSlides = 1 + BANNER_SLIDES.length; /* video + image slides */
+  var totalSlides = BANNER_SLIDES.length;
 
-  /* -- Video slide (index 0) -- */
-  (function(){
-    var slide = el('div', 'banner-slide banner-slide--video');
+  BANNER_SLIDES.forEach(function(s, i){
+    var isVideo = (s.type === 'video') || Boolean(s.video || s.videoSrc);
+    var slide = el('div', 'banner-slide' + (isVideo ? ' banner-slide--video' : ''));
     slide.setAttribute('role', 'group');
     slide.setAttribute('aria-roledescription', 'slide');
-    slide.setAttribute('aria-label', '1 of ' + totalSlides);
+    slide.setAttribute('aria-label', (i + 1) + ' of ' + totalSlides);
 
-    var vid = document.createElement('video');
-    vid.className      = 'banner-video';
-    vid.src            = BANNER_VIDEO_SRC;
-    vid.poster         = BANNER_VIDEO_POSTER;
-    vid.muted          = true;
-    vid.loop           = true;
-    vid.playsInline    = true;
-    vid.preload        = 'auto';
-    vid.setAttribute('aria-hidden', 'true');
-    heroVideo = vid;
+    if (isVideo) {
+      var vid = document.createElement('video');
+      vid.className   = 'banner-video';
+      vid.src         = s.video || s.videoSrc;
+      if (s.poster || s.image) vid.poster = s.poster || s.image;
+      vid.muted       = true;
+      vid.loop        = true;
+      vid.playsInline = true;
+      vid.preload     = (i < 2 ? 'auto' : 'metadata');
+      vid.setAttribute('aria-hidden', 'true');
+      slide.appendChild(vid);
+    } else {
+      var img = document.createElement('img');
+      img.className = 'banner-img';
+      img.src = s.image;
+      img.alt = s.alt || '';
+      if (i === 0) img.setAttribute('fetchpriority', 'high');
+      else img.loading = 'lazy';
+      img.decoding = 'async';
+      slide.appendChild(img);
+    }
 
-    var vs = BANNER_VIDEO_SLIDE;
-    slide.appendChild(vid);
     var content = document.createElement('div');
     content.className = 'container banner-content';
-    content.innerHTML =
-      '<div class="banner-badge" aria-hidden="true"><span>' + vs.badge + '</span></div>' +
-      '<h2 class="banner-title">' + vs.heading + '</h2>' +
-      '<p class="banner-text">' + vs.text + '</p>' +
-      '<a class="btn btn-white" href="' + vs.cta.href + '">' + vs.cta.label + '</a>';
+    var contentHtml = '';
+    if (s.badge) {
+      contentHtml += '<div class="banner-badge" aria-hidden="true"><span>' + s.badge + '</span></div>';
+    }
+    if (s.heading) {
+      contentHtml += '<h2 class="banner-title">' + s.heading + '</h2>';
+    }
+    if (s.text) {
+      contentHtml += '<p class="banner-text">' + s.text + '</p>';
+    }
+    if (s.cta && s.cta.href) {
+      contentHtml += '<a class="btn btn-white" href="' + s.cta.href + '">' + s.cta.label + '</a>';
+    }
+    content.innerHTML = contentHtml;
     slide.appendChild(content);
-    viewport.appendChild(slide);
-    slideEls.push(slide);
-  })();
 
-  /* -- Image slides (index 1…n) -- */
-  BANNER_SLIDES.forEach(function(s, i){
-    var globalIdx = i + 1;
-    var slide = el('div', 'banner-slide');
-    slide.setAttribute('role', 'group');
-    slide.setAttribute('aria-roledescription', 'slide');
-    slide.setAttribute('aria-label', (globalIdx + 1) + ' of ' + totalSlides);
-    slide.innerHTML =
-      '<img class="banner-img" src="' + s.image + '" alt="' + s.alt + '"' +
-        (globalIdx === 0 ? ' fetchpriority="high"' : ' loading="lazy"') + ' decoding="async">' +
-      '<div class="container banner-content">' +
-        '<div class="banner-badge" aria-hidden="true"><span>' + s.badge + '</span></div>' +
-        '<h2 class="banner-title">' + s.heading + '</h2>' +
-        '<p class="banner-text">' + s.text + '</p>' +
-        '<a class="btn btn-white" href="' + s.cta.href + '">' + s.cta.label + '</a>' +
-      '</div>';
     viewport.appendChild(slide);
     slideEls.push(slide);
   });
@@ -171,19 +178,24 @@
       var on = n === current;
       s.classList.toggle('is-active', on);
       s.setAttribute('aria-hidden', on ? 'false' : 'true');
+
+      /* Manage video playback for this slide */
+      var vid = s.querySelector('video.banner-video');
+      if (vid) {
+        if (on && !motionQuery.matches) {
+          try { vid.currentTime = 0; } catch(_) {}
+          vid.play().catch(function(){});
+        } else {
+          vid.pause();
+        }
+      }
     });
+
     dots.forEach(function(d, n){
       d.classList.toggle('is-active', n === current);
       if(n === current) d.setAttribute('aria-current', 'true'); else d.removeAttribute('aria-current');
     });
-    /* Video play / pause */
-    if(heroVideo){
-      if(current === 0){
-        heroVideo.play().catch(function(){});
-      } else {
-        heroVideo.pause();
-      }
-    }
+
     if(user) restart();
   }
 
@@ -195,7 +207,8 @@
   function restart(){
     stop();
     root.setAttribute('aria-live', canPlay() ? 'off' : 'polite');
-    if(canPlay()) timer = setTimeout(function(){ goTo(current + 1); restart(); }, AUTOPLAY_MS);
+    var slideDuration = (BANNER_SLIDES[current] && BANNER_SLIDES[current].duration) || AUTOPLAY_MS;
+    if(canPlay()) timer = setTimeout(function(){ goTo(current + 1); restart(); }, slideDuration);
   }
 
   var on = {
@@ -203,8 +216,31 @@
     leave: function(){ hovering = false; restart(); },
     focusin: function(){ focusing = true; restart(); },
     focusout: function(e){ if(!root.contains(e.relatedTarget)){ focusing = false; restart(); } },
-    visibility: function(){ restart(); },
-    motion: function(){ root.classList.toggle('is-static', motionQuery.matches); restart(); },
+    visibility: function(){
+      if (document.hidden) {
+        slideEls.forEach(function(s){
+          var v = s.querySelector('video.banner-video');
+          if (v) v.pause();
+        });
+      } else if (!motionQuery.matches) {
+        var activeVid = slideEls[current] ? slideEls[current].querySelector('video.banner-video') : null;
+        if (activeVid) activeVid.play().catch(function(){});
+      }
+      restart();
+    },
+    motion: function(){
+      root.classList.toggle('is-static', motionQuery.matches);
+      if (motionQuery.matches) {
+        slideEls.forEach(function(s){
+          var v = s.querySelector('video.banner-video');
+          if (v) v.pause();
+        });
+      } else {
+        var activeVid = slideEls[current] ? slideEls[current].querySelector('video.banner-video') : null;
+        if (activeVid) activeVid.play().catch(function(){});
+      }
+      restart();
+    },
     key: function(e){
       if(e.key === 'ArrowLeft'){ e.preventDefault(); goTo(current - 1, true); }
       else if(e.key === 'ArrowRight'){ e.preventDefault(); goTo(current + 1, true); }
@@ -235,9 +271,13 @@
   if(motionQuery.addEventListener) motionQuery.addEventListener('change', on.motion);
   else if(motionQuery.addListener) motionQuery.addListener(on.motion);
 
-  /* Remove every timer and listener, e.g. if the banner is ever unmounted */
+  /* Clean up listeners if unmounted */
   function destroy(){
     stop();
+    slideEls.forEach(function(s){
+      var v = s.querySelector('video.banner-video');
+      if (v) v.pause();
+    });
     root.removeEventListener('mouseenter', on.enter);
     root.removeEventListener('mouseleave', on.leave);
     root.removeEventListener('focusin', on.focusin);
