@@ -27,7 +27,7 @@
       video:   'assets/images/advertisement/frozen/mixed-products/videos/541454093_1792680718811898.mp4',
       poster:  'assets/photos/samosa-tray-1536.avif',
       badge:   'New<br>Frozen',
-      heading: 'Golden Samosas,<br>Ready at Home',
+      heading: 'Samosas<br> at Home',
       text:    'Stock your freezer with handcrafted 12-piece packs, ready to fry in minutes.',
       cta:     {label: 'Order frozen', href: 'frozen.html'}
     },
