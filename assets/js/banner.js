@@ -43,18 +43,7 @@
       cta:     {label: 'See the menu', href: 'menu.html'}
     },
 
-    /* Slide 4: Video - Mixed Specials & Dips */
-    {
-      type:    'video',
-      video:   'assets/images/advertisement/frozen/mixed-products/videos/KONO_CRISP_frozen_samosas_floating_20261024201707.mp4',
-      poster:  'assets/photos/dips-tray-1536.avif',
-      badge:   '11<br>Sauces',
-      heading: 'Dip Into<br>Something Bold',
-      text:    'Six signature sauces, always complimentary with your box.',
-      cta:     {label: 'Explore sauces', href: 'menu.html#sauces'}
-    },
-
-    /* Slide 5: Image - Visit & Takeaway */
+    /* Slide 4: Image - Visit & Takeaway */
     {
       type:    'image',
       image:   'https://images.unsplash.com/photo-1583067837451-c3491dce56b6?w=1800&q=80&auto=format&fit=crop',
